@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anne-Kathrin Kleine, Julia Cecil, Eva Lermer, &amp; Susanne Gaube">
+
+<title>Current Trends of Artificial Intelligence Patents in Precision Psychiatry: A Systematic Evaluation of the Patent Landscape</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="patents_files/libs/clipboard/clipboard.min.js"></script>
+<script src="patents_files/libs/quarto-html/quarto.js"></script>
+<script src="patents_files/libs/quarto-html/popper.min.js"></script>
+<script src="patents_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="patents_files/libs/quarto-html/anchor.min.js"></script>
+<link href="patents_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="patents_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="patents_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="patents_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="patents_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="patents_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="patents_files/libs/d3-4.5.0/d3.min.js"></script>
+<script src="patents_files/libs/forceNetwork-binding-0.4/forceNetwork.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#materials-and-methods" id="toc-materials-and-methods" class="nav-link" data-scroll-target="#materials-and-methods">Materials and Methods</a>
+  <ul>
+  <li><a href="#database-search" id="toc-database-search" class="nav-link" data-scroll-target="#database-search">Database Search</a></li>
+  <li><a href="#patent-selection-and-coding-of-patent-information" id="toc-patent-selection-and-coding-of-patent-information" class="nav-link" data-scroll-target="#patent-selection-and-coding-of-patent-information">Patent Selection and Coding of Patent Information</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul>
+  <li><a href="#patent-content" id="toc-patent-content" class="nav-link" data-scroll-target="#patent-content">Patent content</a>
+  <ul class="collapse">
+  <li><a href="#illness-group" id="toc-illness-group" class="nav-link" data-scroll-target="#illness-group">Illness group</a></li>
+  <li><a href="#type-of-precision-psychiatry" id="toc-type-of-precision-psychiatry" class="nav-link" data-scroll-target="#type-of-precision-psychiatry">Type of precision psychiatry</a></li>
+  <li><a href="#treatment-recommendations" id="toc-treatment-recommendations" class="nav-link" data-scroll-target="#treatment-recommendations">Treatment recommendations</a></li>
+  <li><a href="#cpc-classes" id="toc-cpc-classes" class="nav-link" data-scroll-target="#cpc-classes">CPC classes</a></li>
+  <li><a href="#text-mining-titles" id="toc-text-mining-titles" class="nav-link" data-scroll-target="#text-mining-titles">Text mining titles</a>
+  <ul class="collapse">
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#word-cloud-of-most-common-nouns" id="toc-word-cloud-of-most-common-nouns" class="nav-link" data-scroll-target="#word-cloud-of-most-common-nouns">Word cloud of most common nouns</a></li>
+  <li><a href="#word-connections" id="toc-word-connections" class="nav-link" data-scroll-target="#word-connections">Word connections</a></li>
+  <li><a href="#topic-modeling" id="toc-topic-modeling" class="nav-link" data-scroll-target="#topic-modeling">Topic modeling</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#trend-data" id="toc-trend-data" class="nav-link" data-scroll-target="#trend-data">Trend data</a>
+  <ul class="collapse">
+  <li><a href="#annual-trend" id="toc-annual-trend" class="nav-link" data-scroll-target="#annual-trend">Annual trend</a></li>
+  <li><a href="#regional-trend" id="toc-regional-trend" class="nav-link" data-scroll-target="#regional-trend">Regional trend</a></li>
+  <li><a href="#top-10-assignees" id="toc-top-10-assignees" class="nav-link" data-scroll-target="#top-10-assignees">Top 10 assignees</a></li>
+  </ul></li>
+  <li><a href="#patent-evaluation-metrics" id="toc-patent-evaluation-metrics" class="nav-link" data-scroll-target="#patent-evaluation-metrics">Patent evaluation metrics</a>
+  <ul class="collapse">
+  <li><a href="#titles-of-five-patents-with-highest-strategic-importance-score" id="toc-titles-of-five-patents-with-highest-strategic-importance-score" class="nav-link" data-scroll-target="#titles-of-five-patents-with-highest-strategic-importance-score">Titles of five patents with highest <em>Strategic Importance</em> score</a></li>
+  <li><a href="#titles-of-five-patents-with-highest-probability-of-being-granted" id="toc-titles-of-five-patents-with-highest-probability-of-being-granted" class="nav-link" data-scroll-target="#titles-of-five-patents-with-highest-probability-of-being-granted">Titles of five patents with highest <em>Probability of being granted</em></a></li>
+  <li><a href="#titles-of-five-patents-with-highest-domain-influence-score" id="toc-titles-of-five-patents-with-highest-domain-influence-score" class="nav-link" data-scroll-target="#titles-of-five-patents-with-highest-domain-influence-score">Titles of five patents with highest <em>domain influence score</em></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Current Trends of Artificial Intelligence Patents in Precision Psychiatry: A Systematic Evaluation of the Patent Landscape</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anne-Kathrin Kleine, Julia Cecil, Eva Lermer, &amp; Susanne Gaube </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Much of the difficulty in treating mental illnesses may be attributed to the poor knowledge we have about the pathophysiology of mental disorders. Symptoms overlap between multiple diseases, and symptom severity or presence may vary significantly among patients falling into one diagnostic category <span class="citation" data-cites="fernandes_etal17 kendler16 newson_etal20">(<a href="#ref-fernandes_etal17" role="doc-biblioref">Fernandes et al. 2017</a>; <a href="#ref-kendler16" role="doc-biblioref">Kendler 2016</a>; <a href="#ref-newson_etal20" role="doc-biblioref">Newson, Hunter, and Thiagarajan 2020</a>)</span>. Consequently, individuals suffering from mental illnesses are often treated for months or even years before receiving appropriate medication or adequate psychotherapeutic support <span class="citation" data-cites="bzdok_meyer-lindenberg18">(<a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>)</span>. For example, only about one-third of major depressive disorder patients experience a remission of symptoms after the initial treatment with antidepressants. One-third respond after an increased dosage or a supplemented therapy, and one-third experience no improvement in symptoms before discontinuing the treatment <span class="citation" data-cites="zanardi_etal21">Souery et al. (<a href="#ref-souery_etal11" role="doc-biblioref">2011</a>)</span>. These changes in treatment regimens or ineffective treatment may impact patients’ quality of life and lead to high healthcare costs <span class="citation" data-cites="zanardi_etal21">(<a href="#ref-zanardi_etal21" role="doc-biblioref">Zanardi et al. 2021</a>)</span>.</p>
+<p>Precision psychiatry offers remedies against the trial-and-error approach in mental healthcare. Analogous to precision medicine, precision psychiatry takes individual variability in biological, environmental, and lifestyle into account to make adequate treatment recommendations <span class="citation" data-cites="fernandes_etal17 salazardepablo_etal21">(<a href="#ref-fernandes_etal17" role="doc-biblioref">Fernandes et al. 2017</a>; <a href="#ref-salazardepablo_etal21" role="doc-biblioref">Salazar de Pablo et al. 2021</a>)</span>. In contrast to the conventional goal of psychiatric research to develop new treatments effective for a <em>majority</em> of patients, precision psychiatry shifts the focus to the precise selection of an existing therapy for <em>a single</em> patient or small groups of patients <span class="citation" data-cites="rush_etal06 bzdok_meyer-lindenberg18 fernandes_etal17">(<a href="#ref-rush_etal06" role="doc-biblioref">Rush et al. 2006</a>; <a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>; <a href="#ref-fernandes_etal17" role="doc-biblioref">Fernandes et al. 2017</a>)</span>. For example, a specific antidepressant may be more effective for one patient than another, even if both suffer from major depressive disorder <span class="citation" data-cites="chekroud_etal16">(<a href="#ref-chekroud_etal16" role="doc-biblioref">Adam Mourad Chekroud et al. 2016</a>)</span>. Similarly, specific psychotherapeutic treatment strategies may be more or less effective for different patients <span class="citation" data-cites="lutz_etal22">(<a href="#ref-lutz_etal22" role="doc-biblioref">Lutz et al. 2022</a>)</span>. By using information from multiple sources (e.g., biological markers, brain imaging, physiological records, environmental exposures, demographic information, and self-reported experience), precision psychiatry facilitates understanding complex disease mechanisms that are difficult to reconstruct using traditional diagnostic instruments alone <span class="citation" data-cites="fernandes_etal17 salazardepablo_etal21">(<a href="#ref-fernandes_etal17" role="doc-biblioref">Fernandes et al. 2017</a>; <a href="#ref-salazardepablo_etal21" role="doc-biblioref">Salazar de Pablo et al. 2021</a>)</span>. Sophisticated modeling techniques may be applied to predict mental conditions being present (diagnostic approach), the development of a condition in the future (prognostic approach), and the response to a specific treatment (predictive approach) at the individual subject level <span class="citation" data-cites="salazardepablo_etal21">(<a href="#ref-salazardepablo_etal21" role="doc-biblioref">Salazar de Pablo et al. 2021</a>)</span>. Even moderately successful models offer starting points for treatment selection, thus solving some problems associated with conventional trial-and-error treatment approaches <span class="citation" data-cites="bzdok_meyer-lindenberg18">(<a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>)</span>.</p>
+<p>The task of deriving individual-level predictions may be accomplished particularly well using artificial intelligence (AI) through machine learning (ML) <span class="citation" data-cites="bzdok_meyer-lindenberg18">(<a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>)</span>. Ml algorithms can be used to identify complex patterns in observational data to predict quantitative (e.g., symptom severity) and categorical (e.g., disease subgroups) phenotypes in clinical settings. ML models often apply a three-step procedure, including training an algorithm on a dataset, fine-tuning the algorithm until its predictions are sufficiently accurate, and leveraging the learned insight by making predictions for unknown data or unknown future events <span class="citation" data-cites="bzdok_meyer-lindenberg18 dwyer_etal18">(<a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>; <a href="#ref-dwyer_etal18" role="doc-biblioref">Dwyer, Falkai, and Koutsouleris 2018</a>)</span>. This approach enables ML models to make predictions about unknown data, thus providing precision psychiatry with powerful means for effective treatment selection. Over the past years, researchers have put considerable effort into developing highly accurate ML-based predictions applicable to precision psychiatry. For example, based on a large set of predictors derived from brain imaging data, <span class="citation" data-cites="yahata_etal16">Yahata et al. (<a href="#ref-yahata_etal16" role="doc-biblioref">2016</a>)</span> identified a small number of functional connections separating typically developed individuals from individuals with autism. They tested the models on an independent dataset. The model accurately classified 85% of the individuals in the validation sample. As another example, using functional imaging data from a large dataset of mental health patients, <span class="citation" data-cites="drysdale_etal17">Drysdale et al. (<a href="#ref-drysdale_etal17" role="doc-biblioref">2017</a>)</span> showed that patients might be clustered into four neurophysiological depression subtypes defined by distinct patterns of dysfunctional connectivity in limbic and frontostriatal networks. The accuracy of their classification model reached 86% in an independent sample. The authors also showed that these subtypes were associated with different clinical symptoms and varying responsiveness to transcranial magnetic stimulation therapy.</p>
+<p>Despite the potential benefits of using AI to strengthen psychiatric and psychotherapeutic practice through precision psychiatry, implementing these techniques in practice is still at an early stage <span class="citation" data-cites="lee_etal21 sendak_etal20 chekroud_etal21">(<a href="#ref-lee_etal21" role="doc-biblioref">Lee et al. 2021</a>; <a href="#ref-sendak_etal20" role="doc-biblioref">Sendak et al. 2020</a>; <a href="#ref-chekroud_etal21" role="doc-biblioref">Adam M. Chekroud et al. 2021</a>)</span>. In fact, until 2021, no FDA-approved or FDA-cleared AI applications existed in psychiatry <span class="citation" data-cites="lee_etal21">(<a href="#ref-lee_etal21" role="doc-biblioref">Lee et al. 2021</a>)</span>. Accordingly, current insight into the benefits of AI for precision psychiatry exclusively stems from research findings that neglect aspects relevant to market adoption <span class="citation" data-cites="bzdok_meyer-lindenberg18 passos_etal22 salazardepablo_etal21 zanardi_etal21">(e.g., <a href="#ref-bzdok_meyer-lindenberg18" role="doc-biblioref">Bzdok and Meyer-Lindenberg 2018</a>; <a href="#ref-passos_etal22" role="doc-biblioref">Passos et al. 2022</a>; <a href="#ref-salazardepablo_etal21" role="doc-biblioref">Salazar de Pablo et al. 2021</a>; <a href="#ref-zanardi_etal21" role="doc-biblioref">Zanardi et al. 2021</a>)</span>. Using a patent analysis approach, we seek to complement the current understanding of how AI-enabled precision psychiatry tools may be used in practice. Patents represent exclusive rights granted for an invention that presents a new way of doing something. Accordingly, a patent review may add new layers of understanding of recent developments in precision psychiatry above and beyond those gained through scientific evidence alone. The global market for mental health software is expected to increase from USD 2.44 billion in 2021 to USD 7.61 billion by 2030 <span class="citation" data-cites="strategicmarketresearch21">(<a href="#ref-strategicmarketresearch21" role="doc-biblioref">Strategic Market Research 2021</a>)</span>. Patent analysis helps comprehend the technology development of AI-enabled tools in precision psychiatry, highlight the areas of precision psychiatry that are most commonly addressed, and identify solutions that have the greatest chances of market adaptation <span class="citation" data-cites="ailia_etal22 krestel_etal21">(<a href="#ref-ailia_etal22" role="doc-biblioref">Ailia et al. 2022</a>; <a href="#ref-krestel_etal21" role="doc-biblioref">Krestel et al. 2021</a>)</span>.</p>
+</section>
+<section id="materials-and-methods" class="level1">
+<h1>Materials and Methods</h1>
+<section id="database-search" class="level2">
+<h2 class="anchored" data-anchor-id="database-search">Database Search</h2>
+<p>This study was performed in accordance with the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA). We used the Derwent Innovation (DI) database and its smart search function for the patent search. The Derwent World Patents Index (DWPI) of DI offers the option to extract additional information on patent novelty, use, advantage, and technical focus. The smart search function analyses word strings semantically and automatically expands keywords including related relevant terms. For the final search, we used smart search terms referring to precision psychiatry, artificial intelligence, and mental illness. Since we intended to provide insight into current developments, we limited our search to patents published after the 1st of January, 2015. Terms relating to precision psychiatry were collected from a systematic review on the same topic <span class="citation" data-cites="salazardepablo_etal21">(<a href="#ref-salazardepablo_etal21" role="doc-biblioref">Salazar de Pablo et al. 2021</a>)</span>. For the keywords relating to mental illness, we collected the mental illness groups mentioned in the DSM-V-TR manual <span class="citation" data-cites="Diagnostic22">(<a href="#ref-Diagnostic22" role="doc-biblioref"><em>Diagnostic and Statistical Manual of Mental Disorders</em> 2022</a>)</span>. We refined the search term by requiring keywords relating to mental illness to be mentioned in the patent abstract. The DI database was searched up until October 2022 using the search query:</p>
+<p>SSTO<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>=(“risk prediction”) OR SSTO=(“predictive”) OR SSTO=(“prognostic”) OR SSTO=(“diagnostic”)) AND (SSTO=(“artificial intelligence”) OR SSTO=(“machine learning”)) AND (SSTO=(“psychiatrist”) OR SSTO=(“psychotherapist”) OR SSTO=(“mental health”) OR SSTO=(“mental illness”)) AND (ABO<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>=(“psychiatr*”) OR ABO=(psychotherap*) OR ABO=(“mental health”) OR ABO=(“mental illness”) OR ABO=(“mood disorder*”) OR ABO=(“affective disorder*”) OR ABO=(depress*) OR ABO=(neurodevelopmental) OR ABO=(autis*) OR ABO=(“adhd”) OR ABO=(“conduct disorder*”) OR ABO=(“mood dysregulation”) OR ABO=(“gender dysphoria”) OR ABO=(“gaming disorder*”) OR ABO=(“paraphilic disorder*”) OR AB=(“bipolar”) OR ABO=(anxi*) OR ABO=(obsess*) OR ABO=(trauma*) OR ABO=(posttrauma*) OR ABO=(“learning disorder*”) OR ABO=(“social communication disorder*”) OR ABO=(“somatic symptom disorder*”) OR ABO=(dissociat*) OR ABO=(“eating”) OR ABO=((“sleep”) NOT (“sleep apnea”)) OR ABO=(“sexual disorder*”) OR ABO=(addict*) OR ABO=(substance) OR ABO=(“personality”) OR ABO=(“psychosis”) OR ABO=(psychot*) OR ABO=(“schizo”)) AND DP<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>&gt;=(20150101)</p>
+<p>We extracted DWPI patent families. DWPI patent families group together patent records for the same invention filed in different jurisdictions, thus avoiding the retrieval of duplicate entries for the same invention. Please see here for more information on DWPI patent families: <a href="https://support.clarivate.com/Patents/s/article/Derwent-Innovation-Patent-Family-Collapse-FAQ?">https://support.clarivate.com/Patents/s/article/Derwent-Innovation-Patent-Family-Collapse-FAQ?</a>.</p>
+</section>
+<section id="patent-selection-and-coding-of-patent-information" class="level2">
+<h2 class="anchored" data-anchor-id="patent-selection-and-coding-of-patent-information">Patent Selection and Coding of Patent Information</h2>
+<p>We summarized the search and review process in Figure <a href="#fig-prisma">Figure&nbsp;1</a>. First, we removed all remaining duplicate entries. Next, the titles, abstracts, descriptions, and claims (DWPI and original) of all patents were examined by AK and X. First, we included patents if the necessary information was provided in English. This led to the exclusion of <em>n</em> = patents. Second, we included patents if they reported on a tool that may be used for diagnostic (predicting the presence of a condition), prognostic (predicting clinical outcomes in the absence of therapy), or predictive (predicting treatment outcomes) purposes in precision psychiatry. This led to the exclusion of patents unrelated to mental health (<em>n</em> = ; e.g., …) and patents that did not fulfill diagnostic, prognostic, or predictive purposes (<em>n</em> = ; e.g., …). Third, we included patents if they were designed to make predictions regarding the present or future occurrence of mental illnesses, defined according to established psychometric criteria. This led to the exclusion of patents not targeted towards predicting mental illnesses (<em>n</em> = ; e.g.,…). Fourth, we included patents if AI was used for making predictions. This led to the exclusion of <em>n</em> = patents. For example, … Finally, we included patents that describe tools that may be used in clinical practice, leading to the exclusion of <em>n</em> = patents. For example, …</p>
+<div id="fig-prisma" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><embed src="Prisma/Prisma_diagram.pdf" width="650" height="650"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Patent search and selection according to PRISMA guidelines.</figcaption><p></p>
+</figure>
+</div>
+<p>AK and JC scanned abstracts, claims, and patent descriptions of all retrieved patents to code information on the targeted illness group and the type of precision psychiatry used (i.e., diagnostic, predictive, prognostic). If a precision treatment was included in the patent, they coded the treatment advice given (e.g., treatment recommendation) and the targeted type of treatment (e.g., pharmacotherapy).</p>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
+<p>The data was analysed using Excel (Version 16.66.1) and R (Version 4.2.1). First, we summarized data relating to patent content. Specifically, we aggregated information on a) the targeted illness groups; b) the type of precision psychiatry used (i.e., diagnostic, predictive, prognostic); c) whether or not treatment-related recommendations were provided, and, if yes, information on the type of treatment-related recommendations (e.g., treatment selection versus treatment adjustment) and the type of treatment (e.g., pharmacotherapy versus psychotherapy) provided; and d) the distribution of Cooperative Patent Classification (CPC) classes. In addition, we examined the DWPI titles and abstracts using natural language processing (NLP) approaches (i.e., cluster analysis, topic modeling) to identify relevant topics within the different fields of precision psychiatry.</p>
+<p>Second, we analysed information about temporal and regional developments and the most active companies and inventors. Specifically, we present the annual trend of patent publications between January 2015 and October 2022, the regional distribution of patent publications, and the top ten assignees. Third, we present aggregated information on patent evaluation metrics, such as patent strategic importance (based on DI intelligence), the probability that the patented is granted (based on DI intelligence), and domain influence (based on DI intelligence).</p>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Read in data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../../data/Search_results/2022-11-04_exported.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all rows that contain "exclude" in Include/exclude column</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data[<span class="fu">grepl</span>(<span class="st">"Include"</span>, data<span class="sc">$</span><span class="st">`</span><span class="at">Include/exclude</span><span class="st">`</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="patent-content" class="level2">
+<h2 class="anchored" data-anchor-id="patent-content">Patent content</h2>
+<p>First, we summarized data relating to patent content. Specifically, we aggregated information on a) the targeted illness groups; b) the type of precision psychiatry used (i.e., diagnostic, predictive, prognostic); c) whether or not treatment-related recommendations were provided, and, if yes, information on the type of treatment-related recommendations (e.g., treatment selection versus treatment adjustment) and the type of treatment (e.g., pharmacotherapy versus psychotherapy) provided; and d) the distribution of Cooperative Patent Classification (CPC) classes. In addition, we examined the DWPI titles and abstracts using natural language processing (NLP) approaches (i.e., cluster analysis, topic modeling) to identify relevant topics within the different fields of precision psychiatry.</p>
+<section id="illness-group" class="level3">
+<h3 class="anchored" data-anchor-id="illness-group">Illness group</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create illness group strings</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>illness_groups <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Illness group</span><span class="st">`</span>, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>illness_groups_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(illness_groups) <span class="sc">%&gt;%</span> <span class="fu">count</span>(illness_groups) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(illness_groups_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(illness_groups,<span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by illness group"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Illness group"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="type-of-precision-psychiatry" class="level3">
+<h3 class="anchored" data-anchor-id="type-of-precision-psychiatry">Type of precision psychiatry</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create precision psychiatry group strings</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>precision_groups <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Precision psychiatry domain</span><span class="st">`</span>, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>precision_groups_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(precision_groups) <span class="sc">%&gt;%</span> <span class="fu">count</span>(precision_groups) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(precision_groups <span class="sc">!=</span> <span class="st">"treatment"</span>) <span class="co"># remove treatment </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(precision_groups_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(precision_groups, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by precision psychiatry group"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Precision psychiatry domain"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="treatment-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="treatment-recommendations">Treatment recommendations</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Treatment recommendations were provided in"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Feedback type (in case of treatment/ predictive)</span><span class="st">`</span>))<span class="sc">*</span><span class="dv">100</span>,<span class="dv">2</span>), <span class="st">"percent of the patents."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Treatment recommendations were provided in 27.16 percent of the patents.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create precision treatment groups strings</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>treatment_groups <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Feedback type (in case of treatment/ predictive)</span><span class="st">`</span>, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>treatment_groups_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(treatment_groups) <span class="sc">%&gt;%</span> <span class="fu">count</span>(treatment_groups) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(treatment_groups_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(treatment_groups, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by type of treatment-related recommendation"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Treatment-related recommendation type"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create precision treatment groups strings</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>intervention_groups <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Intervention type</span><span class="st">`</span>, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>intervention_groups_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(intervention_groups) <span class="sc">%&gt;%</span> <span class="fu">count</span>(intervention_groups) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(intervention_groups_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(intervention_groups, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by targeted treatment"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Targeted treatment"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create data type groups</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data_types <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span>Data, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data_types_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(data_types) <span class="sc">%&gt;%</span> <span class="fu">count</span>(data_types) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_types_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(data_types, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by data types"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Data type"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="cpc-classes" class="level3">
+<h3 class="anchored" data-anchor-id="cpc-classes">CPC classes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create CPC groups</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cpc <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">CPC - Current - DWPI</span><span class="st">`</span>, <span class="st">" | "</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span>  <span class="fu">tolower</span>(.) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.) </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>cpc <span class="ot">&lt;-</span> cpc[cpc <span class="sc">!=</span> <span class="st">"|"</span>];</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>CPC_short <span class="ot">&lt;-</span> <span class="fu">substr</span>(cpc, <span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>CPC_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(CPC_short) <span class="sc">%&gt;%</span> <span class="fu">count</span>(CPC_short) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span> <span class="fu">head</span>(., <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(CPC_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(CPC_short, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by CPC group"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">CPC group"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="text-mining-titles" class="level3">
+<h3 class="anchored" data-anchor-id="text-mining-titles">Text mining titles</h3>
+<section id="preparation" class="level4">
+<h4 class="anchored" data-anchor-id="preparation">Preparation</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Wrangling and Visualization</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(widyr)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Date &amp; Time Manipulation.</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hms)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Text Mining</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Network Analysis</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Network Visualization (D3.js)</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(networkD3)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">data.table</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> titles <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove column.</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert to lowercase. </span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text =</span> V1 <span class="sc">%&gt;%</span> str_to_lower) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unwanted characters. </span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text=</span> Text <span class="sc">%&gt;%</span> <span class="fu">str_remove_all</span>(<span class="at">pattern =</span> <span class="st">'</span><span class="sc">\\</span><span class="st">n'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text =</span> Text <span class="sc">%&gt;%</span> <span class="fu">str_remove_all</span>(<span class="at">pattern =</span> <span class="st">'&amp;amp'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text =</span> Text <span class="sc">%&gt;%</span> <span class="fu">str_remove</span>(<span class="at">pattern =</span> <span class="st">'^(rt)'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text =</span> Text <span class="sc">%&gt;%</span> <span class="fu">str_remove_all</span>(<span class="at">pattern =</span> <span class="st">'</span><span class="sc">\\</span><span class="st">_'</span>)) </span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace accents. </span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>replacement.list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">'á'</span> <span class="ot">=</span> <span class="st">'a'</span>, <span class="st">'é'</span> <span class="ot">=</span> <span class="st">'e'</span>, <span class="st">'í'</span> <span class="ot">=</span> <span class="st">'i'</span>, <span class="st">'ó'</span> <span class="ot">=</span> <span class="st">'o'</span>, <span class="st">'ú'</span> <span class="ot">=</span> <span class="st">'u'</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> titles <span class="sc">|&gt;</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Text =</span> <span class="fu">chartr</span>(<span class="at">old =</span> <span class="fu">names</span>(replacement.list) <span class="sc">%&gt;%</span> <span class="fu">str_c</span>(<span class="at">collapse =</span> <span class="st">''</span>), </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">new =</span> replacement.list <span class="sc">%&gt;%</span> <span class="fu">str_c</span>(<span class="at">collapse =</span> <span class="st">''</span>),</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                       <span class="at">x =</span> V1))</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ud_model <span class="ot">&lt;-</span> <span class="fu">udpipe_download_model</span>(<span class="at">language =</span> <span class="st">"english"</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ud_model <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(ud_model<span class="sc">$</span>file_model)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_model, <span class="at">x =</span> titles<span class="sc">$</span>Text)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">subset</span>(x, upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"NOUN"</span>)) </span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">unique</span>(titles<span class="sc">$</span>sentence))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(textstem)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SemNetCleaner)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In addition, we convert out text into a corpus to use the tm library.</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span>  <span class="fu">Corpus</span>(<span class="at">x =</span> <span class="fu">VectorSource</span>(<span class="at">x =</span> titles<span class="sc">$</span>V1))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>titles.text <span class="ot">&lt;-</span> corpus <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_map</span>(removePunctuation) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_map</span>(removeNumbers) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_map</span>(removeWords, <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">'english'</span>), <span class="st">"The"</span>, <span class="st">"involves"</span>, <span class="st">"based"</span>, <span class="st">"using"</span>, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"machine learning"</span>, <span class="st">"artificial intelligence"</span>, <span class="st">"mental health"</span>, <span class="st">"mental illness"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_map</span>(PlainTextDocument)  <span class="sc">|&gt;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tm_map</span>(stemDocument)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Recover data into original tibble.</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>titles <span class="ot">&lt;-</span> titles <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Text =</span> titles.text[[<span class="dv">1</span>]]<span class="sc">$</span>content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="word-cloud-of-most-common-nouns" class="level4">
+<h4 class="anchored" data-anchor-id="word-cloud-of-most-common-nouns">Word cloud of most common nouns</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># word count</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>words.df <span class="ot">&lt;-</span> titles <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(<span class="at">input =</span> Text, <span class="at">output =</span> word)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>word.count <span class="ot">&lt;-</span> words.df <span class="sc">%&gt;%</span> <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>word.count <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       word  n
+ 1:    data 53
+ 2:  method 37
+ 3:   model 36
+ 4:  disord 33
+ 5:  system 32
+ 6:  autism 27
+ 7: patient 27
+ 8: predict 26
+ 9: depress 24
+10:   modul 22</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">words =</span> word.count<span class="sc">$</span>word, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> word.count<span class="sc">$</span>n, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min.freq =</span> <span class="dv">5</span>, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">viridis</span>(<span class="at">n =</span> <span class="dv">9</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>bi.gram.words <span class="ot">&lt;-</span> titles <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">input =</span> Text, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">output =</span> bigram, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">token =</span> <span class="st">'ngrams'</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">2</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span> <span class="fu">is.na</span>(bigram))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>bi.gram.words <span class="sc">%&gt;%</span> </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(bigram) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              bigram
+ 1: apparatus provid
+ 2:     provid brain
+ 3:     brain inform
+ 4:     inform brain
+ 5:     brain signal
+ 6:    signal measur
+ 7:      measur unit
+ 8:       unit whose
+ 9:     whose signal
+10:   signal collect</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bi.gram.count <span class="ot">&lt;-</span> bi.gram.words <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> bigram, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">'word1'</span>, <span class="st">'word2'</span>), <span class="at">sep =</span> <span class="st">' '</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We rename the weight column so that the </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># associated network gets the weights (see below).</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">weight =</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bi.gram.count %&gt;% </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  mutate(weight = log(weight + 1)) %&gt;% </span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  ggplot(mapping = aes(x = weight)) +</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    theme_light() +</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    geom_histogram() +</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    labs(title = "Bigram log-Weight Distribution")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>threshold <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># For visualization purposes we scale by a global factor. </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ScaleWeight <span class="ot">&lt;-</span> <span class="cf">function</span>(x, lambda) {</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">/</span> lambda</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span>  bi.gram.count <span class="sc">%&gt;%</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;</span> threshold) <span class="sc">%&gt;%</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight =</span> <span class="fu">ScaleWeight</span>(<span class="at">x =</span> weight, <span class="at">lambda =</span> <span class="fl">2E3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_data_frame</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="word-connections" class="level4">
+<h4 class="anchored" data-anchor-id="word-connections">Word connections</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(network)<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="fu">clusters</span>(<span class="at">graph =</span> network)<span class="sc">$</span>membership</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>cc.network <span class="ot">&lt;-</span> <span class="fu">induced_subgraph</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">graph =</span> network,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vids =</span> <span class="fu">which</span>(<span class="fu">V</span>(network)<span class="sc">$</span>cluster <span class="sc">==</span> <span class="fu">which.max</span>(<span class="fu">clusters</span>(<span class="at">graph =</span> network)<span class="sc">$</span>csize))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the degree.</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(cc.network)<span class="sc">$</span>degree <span class="ot">&lt;-</span> <span class="fu">strength</span>(<span class="at">graph =</span> cc.network)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the weight shares.</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(cc.network)<span class="sc">$</span>width <span class="ot">&lt;-</span> <span class="fu">E</span>(cc.network)<span class="sc">$</span>weight<span class="sc">/</span><span class="fu">max</span>(<span class="fu">E</span>(cc.network)<span class="sc">$</span>weight)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  cc.network, </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.color =</span> <span class="st">'lightblue'</span>,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scale node size by degree.</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="dv">10</span><span class="sc">*</span><span class="fu">V</span>(cc.network)<span class="sc">$</span>degree,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.color =</span> <span class="st">'black'</span>, </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="fl">0.6</span>, </span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.dist =</span> <span class="fl">1.6</span>,</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.color =</span> <span class="st">'gray'</span>, </span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set edge width proportional to the weight relative value.</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.width =</span> <span class="dv">3</span><span class="sc">*</span><span class="fu">E</span>(cc.network)<span class="sc">$</span>width ,</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">'Bigram Count Network (Biggest Connected Component)'</span>, </span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub =</span> <span class="fu">glue</span>(<span class="st">'Weight Threshold: {threshold}'</span>), </span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="dv">50</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>network <span class="ot">&lt;-</span>  bi.gram.count <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(weight <span class="sc">&gt;</span> threshold) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_data_frame</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the degree.</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(network)<span class="sc">$</span>degree <span class="ot">&lt;-</span> <span class="fu">strength</span>(<span class="at">graph =</span> network)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the weight shares.</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(network)<span class="sc">$</span>width <span class="ot">&lt;-</span> <span class="fu">E</span>(network)<span class="sc">$</span>weight<span class="sc">/</span><span class="fu">max</span>(<span class="fu">E</span>(network)<span class="sc">$</span>weight)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create networkD3 object.</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>network.D3 <span class="ot">&lt;-</span> <span class="fu">igraph_to_networkD3</span>(<span class="at">g =</span> network)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define node size.</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>network.D3<span class="sc">$</span>nodes <span class="ot">&lt;-</span>  network.D3<span class="sc">$</span>nodes <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Degree =</span> (<span class="fl">1E-2</span>)<span class="sc">*</span><span class="fu">V</span>(network)<span class="sc">$</span>degree)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Degine color group (I will explore this feature later).</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>network.D3<span class="sc">$</span>nodes <span class="ot">&lt;-</span> network.D3<span class="sc">$</span>nodes <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">Group =</span> <span class="dv">1</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define edges width. </span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>network.D3<span class="sc">$</span>links<span class="sc">$</span>Width <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">*</span><span class="fu">E</span>(network)<span class="sc">$</span>width</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">forceNetwork</span>(</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Links =</span> network.D3<span class="sc">$</span>links, </span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nodes =</span> network.D3<span class="sc">$</span>nodes, </span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">Source =</span> <span class="st">'source'</span>, </span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">Target =</span> <span class="st">'target'</span>,</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">NodeID =</span> <span class="st">'name'</span>,</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="st">'Group'</span>, </span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">opacity =</span> <span class="fl">0.9</span>,</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="st">'Width'</span>,</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">Nodesize =</span> <span class="st">'Degree'</span>, </span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># We input a JavaScript function.</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">linkWidth =</span> <span class="fu">JS</span>(<span class="st">"function(d) { return Math.sqrt(d.value); }"</span>), </span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontSize =</span> <span class="dv">12</span>,</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">zoom =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">opacityNoHover =</span> <span class="dv">1</span></span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-80e165bcd66f0718b42c" style="width:100%;height:464px;" class="forceNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-80e165bcd66f0718b42c">{"x":{"links":{"source":[6,3,3,12,6,2,10,25,1,3,12,26,5,9,4,2,2,18,17,8,7,27,7,3,23,29,31,14,2,17,3,5,0,25,22,7,7,0,26,15,3],"target":[36,16,18,19,20,21,23,33,33,24,39,47,35,38,6,26,7,43,27,37,48,28,9,9,45,49,50,40,11,42,34,41,1,46,44,13,13,30,30,32,32],"value":[10,10,5,4.16666666666667,4.16666666666667,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,3.33333333333333,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["autism","spectrum","predict","data","machin","brain","learn","model","neural","output","psychiatr","risk","system","train","analysi","audio","big","cell","collect","control","deep","depress","digit","diseas","eeg","mental","method","multipl","one","patientspecif","treat","treatment","video","disord","set","imag","algorithm","network","indic","evalu","result","signal","sampl","modul","therapeut","patient","state","identifi","obtain","pharmacotherapi","plan"],"group":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"nodesize":[0.15,0.24,0.16,0.21,0.05,0.07,0.12,0.2,0.04,0.1,0.04,0.04,0.07,0.08,0.03,0.03,0.03,0.06,0.07,0.03,0.03,0.03,0.03,0.07,0.03,0.06,0.09,0.06,0.03,0.03,0.06,0.03,0.06,0.15,0.05,0.04,0.04,0.04,0.04,0.04,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03]},"options":{"NodeID":"name","Group":"Group","colourScale":"d3.scaleOrdinal(d3.schemeCategory20);","fontSize":12,"fontFamily":"serif","clickTextSize":30,"linkDistance":50,"linkWidth":"function(d) { return Math.sqrt(d.value); }","charge":-30,"opacity":0.9,"zoom":true,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":" Math.sqrt(d.nodesize)+6","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="topic-modeling" class="level4">
+<h4 class="anchored" data-anchor-id="topic-modeling">Topic modeling</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>titles_vector <span class="ot">&lt;-</span> titles<span class="sc">$</span>Text</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>titles_vs <span class="ot">&lt;-</span> <span class="fu">VectorSource</span>(titles_vector)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>corpus <span class="ot">&lt;-</span>  <span class="fu">Corpus</span>(titles_vs)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>TextDoc <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(corpus)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>removeCommonTerms <span class="ot">&lt;-</span> <span class="cf">function</span> (x, pct) </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stopifnot</span>(<span class="fu">inherits</span>(x, <span class="fu">c</span>(<span class="st">"DocumentTermMatrix"</span>, <span class="st">"TermDocumentMatrix"</span>)), </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.numeric</span>(pct), pct <span class="sc">&gt;</span> <span class="dv">0</span>, pct <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">inherits</span>(x, <span class="st">"DocumentTermMatrix"</span>)) </span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">t</span>(x)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> x</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="fu">table</span>(m<span class="sc">$</span>i) <span class="sc">&lt;</span> m<span class="sc">$</span>ncol <span class="sc">*</span> (pct)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    termIndex <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(t[t]))</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">inherits</span>(x, <span class="st">"DocumentTermMatrix"</span>)) </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        x[, termIndex]</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> x[termIndex, ]</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>TextDoc <span class="ot">&lt;-</span> <span class="fu">removeCommonTerms</span>(TextDoc ,.<span class="dv">50</span>)</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(topicmodels)</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>rowTotals <span class="ot">&lt;-</span> <span class="fu">apply</span>(TextDoc , <span class="dv">1</span>, sum)</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>TextDoc_dtm   <span class="ot">&lt;-</span> TextDoc[rowTotals<span class="sc">&gt;</span> <span class="dv">3</span>, ] </span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="co"># set a seed so that the output of the model is predictable</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>ap_lda <span class="ot">&lt;-</span> <span class="fu">LDA</span>(TextDoc_dtm, <span class="at">k =</span> <span class="dv">10</span>, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">seed =</span> <span class="dv">1234</span>))</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>ap_topics <span class="ot">&lt;-</span> <span class="fu">tidy</span>(ap_lda, <span class="at">matrix =</span> <span class="st">"beta"</span>)</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="ot">&lt;-</span> ap_topics <span class="sc">%&gt;%</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(topic) <span class="sc">%&gt;%</span></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(beta, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(topic, <span class="sc">-</span>beta) <span class="sc">|&gt;</span></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(beta <span class="sc">&gt;=</span> <span class="fl">0.026</span>)</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>ap_top_terms <span class="sc">%&gt;%</span></span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(beta, term, <span class="at">fill =</span> <span class="fu">factor</span>(topic))) <span class="sc">+</span></span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> topic, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reordered</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="trend-data" class="level2">
+<h2 class="anchored" data-anchor-id="trend-data">Trend data</h2>
+<p>Second, we analysed information about temporal and regional developments and the most active companies and inventors. Specifically, we present the annual trend of patent publications between January 2015 and October 2022, the regional distribution of current assignees, and the names of the top 15 assignees.</p>
+<section id="annual-trend" class="level3">
+<h3 class="anchored" data-anchor-id="annual-trend">Annual trend</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"Publication Date"</span> <span class="ot">=</span> <span class="fu">as.Date</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Publication Date</span><span class="st">`</span>, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Pub_year <span class="ot">&lt;-</span> <span class="fu">format</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Publication Date</span><span class="st">`</span>, <span class="at">format =</span> <span class="st">"%Y"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>trend_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(data<span class="sc">$</span>Pub_year) <span class="sc">%&gt;%</span>  <span class="fu">count</span>(data.Pub_year) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create trend plot </span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>trend_freq <span class="sc">%&gt;%</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> data.Pub_year, <span class="at">y =</span> n, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkorchid4"</span>) <span class="sc">+</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Annual trend data"</span>,</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Patent publication year"</span>) <span class="sc">+</span> </span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="regional-trend" class="level3">
+<h3 class="anchored" data-anchor-id="regional-trend">Regional trend</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>world_map <span class="ot">&lt;-</span> <span class="fu">subset</span>(world_map, region <span class="sc">!=</span> <span class="st">"Antarctica"</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>trend_country_freq <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="st">`</span><span class="at">Assignee Country</span><span class="st">`</span>) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(n)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>trend_country_freq <span class="ot">&lt;-</span> trend_country_freq[<span class="fu">complete.cases</span>(trend_country_freq), ] <span class="sc">%&gt;%</span> </span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Assign_country =</span> Assignee.Country)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">transform</span>(trend_country_freq,                                            </span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">txt =</span> <span class="fu">sprintf</span>(<span class="st">"%s (%i)"</span>, Assign_country, n),                             </span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">vj =</span> <span class="sc">-</span><span class="fl">1.8</span> <span class="sc">*</span> <span class="fu">seq</span>(<span class="fu">nrow</span>(trend_country_freq))                              </span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_map</span>(</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">dat =</span> world_map, <span class="at">map =</span> world_map, <span class="fu">aes</span>(<span class="at">map_id =</span> region),</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"#7f7f7f"</span>, <span class="at">size =</span> <span class="fl">0.25</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> world_map, <span class="fu">aes</span>(<span class="at">map_id =</span> Assign_country, <span class="at">fill =</span> n), <span class="at">size =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#fde725"</span>, <span class="at">high =</span> <span class="st">"#440154"</span>, <span class="at">name =</span> <span class="st">"Total Cases"</span>) <span class="sc">+</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> world_map<span class="sc">$</span>long, <span class="at">y =</span> world_map<span class="sc">$</span>lat) <span class="sc">+</span> </span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="at">panel.background =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> txt, <span class="at">vjust =</span> vj), <span class="at">x =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">y =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">family =</span> <span class="st">"Times New Roman"</span>) <span class="sc">+</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="top-10-assignees" class="level3">
+<h3 class="anchored" data-anchor-id="top-10-assignees">Top 10 assignees</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Assignee_corrected <span class="ot">&lt;-</span><span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|.*"</span>,<span class="st">""</span>,data<span class="sc">$</span><span class="st">`</span><span class="at">Assignee - DWPI</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create illness group strings</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>Assignees <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(data<span class="sc">$</span>Assignee_corrected, <span class="st">","</span>)) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>(., <span class="at">side =</span> <span class="st">"both"</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create frequency table</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>Assignees_freq <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Assignees) <span class="sc">%&gt;%</span> <span class="fu">count</span>(Assignees) <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="sc">-</span>n) <span class="sc">%&gt;%</span>  <span class="fu">head</span>(., <span class="dv">10</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot frequency table </span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Assignees_freq, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Assignees, <span class="sc">-</span>n), <span class="at">y =</span> n)) <span class="sc">+</span> </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"#35b779"</span>) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="cf">function</span>(x) </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_wrap</span>(x, <span class="at">width =</span> <span class="dv">8</span>))<span class="sc">+</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frequency by assignee"</span>, <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Assignee"</span>, <span class="at">y =</span> <span class="st">"Frequency</span><span class="sc">\n</span><span class="st">"</span>) <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Times New Roman"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="patents_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="patent-evaluation-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="patent-evaluation-metrics">Patent evaluation metrics</h2>
+<p>Third, we present aggregated information on patent evaluation metrics, such as patent strategic importance (based on DI intelligence), the probability that the patented is granted (based on DI intelligence), and domain influence (based on DI intelligence). These metrics rely on machine learning techniques with over 150 input variables from several general categories which reflect aspects of the patent influential to patent importance and future event occurrences. The algorithm used to calculate these metrics is proprietary, which includes both the exact variables used and how those variables affect the score. The general categories considered are: Litigation (What has been the litigation activity on this and similar historical patents?), up-/downstream events (Have there been upstream applications on this and similar historical patents, such as continuations or continuations in part from a previous record? Have there been downstream applications on this and similar historical patents, such as new family members, child applications, divisionals, or continuations on this record?), legal status (What is the pattern of legal status events present on the record? What do the patterns of historical patents tell us about likely future events?), patent text (What patterns can be identified in the text of the patent, for example within the claims?), citations (What patterns can be identified in the citation activity of the patent, both forward and backward? Which aspects of citation data can be used to differentiate one citation from another, especially the impact of one citation compared to another?), technology (classifications) (What is the different typical behavior of patents and patentees across different technology classifications? How do some industries act differently from others?), filing type (What is the typical behavior of one type of patent over another (e.g application, design, utility model)?), family/filing breadth (What does the patent family structure and location of filings tell us about the importance of a patent and the behavior of the patentee?), parties involved (What effect does the combination of interested parties, and the changes to those parties, have on the lifespan of a patent?).</p>
+<section id="titles-of-five-patents-with-highest-strategic-importance-score" class="level3">
+<h3 class="anchored" data-anchor-id="titles-of-five-patents-with-highest-strategic-importance-score">Titles of five patents with highest <em>Strategic Importance</em> score</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span><span class="st">`</span><span class="at">Strategic Importance</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Strategic Importance</span><span class="st">`</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>strat_imp <span class="ot">&lt;-</span> data[<span class="fu">order</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Strategic Importance</span><span class="st">`</span>, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ] <span class="sc">%&gt;%</span> <span class="fu">head</span>(.,<span class="dv">5</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 1:"</span>, strat_imp<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 1: Digital therapeutic system for treating subject e.g. patient with behavioral, neurological, or mental health disorder, has therapeutic module which receives updated diagnostic data and outputs personal treatment plan for subject</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 2:"</span>, strat_imp<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 2: System for screening mind health of patients, has user interface for terminating test application by control system, microphone for set of audio data, and processors for outputting mind health indication of user</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 3:"</span>, strat_imp<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 3: System for screening mental health disorders of patients based on machine learning, has test application for processing set of test video data, and set of audio data using machine learning model to output mental health indication of user</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 4:"</span>, strat_imp<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 4: Providing algorithm to predict treatment in patient with depressive and anxiety symptoms, comprises performing single nucleotide polymorphism genotyping analysis and determining value indicative for corticotropin releasing hormone activity</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 5:"</span>, strat_imp<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 5: Method for predictive diagnosis of chronic disease in subject, involves applying classifier model to vector to identify whether medical condition of subject indicates likelihood of subject while developing chronic diseases</code></pre>
+</div>
+</div>
+</section>
+<section id="titles-of-five-patents-with-highest-probability-of-being-granted" class="level3">
+<h3 class="anchored" data-anchor-id="titles-of-five-patents-with-highest-probability-of-being-granted">Titles of five patents with highest <em>Probability of being granted</em></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span><span class="st">`</span><span class="at">Probability of Grant</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Probability of Grant</span><span class="st">`</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>grant_prob <span class="ot">&lt;-</span> data[<span class="fu">order</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Probability of Grant</span><span class="st">`</span>, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ] <span class="sc">%&gt;%</span> <span class="fu">head</span>(.,<span class="dv">5</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 1:"</span>, grant_prob<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 1: Apparatus for providing brain information based on artificial intelligence, has brain signal measuring unit whose signal collection operation can include state in which gait of user is changed, state in which stress of user is changed</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 2:"</span>, grant_prob<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 2: Machine learning forecast autism spectrum disorder evaluating method, involves obtaining characteristic training classifier information according to eye classifier module, and performing forecast autism spectrum disorder evaluating process</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 3:"</span>, grant_prob<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 3: Intestinal biomarker useful in e.g. preparing detection reagent for depression, and preparing kit for diagnosing depression and screening method useful in determining intestinal biomarkers of patients with depression</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 4:"</span>, grant_prob<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 4: Method for constructing risk prediction model for autism spectrum disorder (ASD), involves obtaining first model and second model respectively, and combining first model and second model to complete construction of ASD risk prediction model</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 5:"</span>, grant_prob<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 5: Autism detecting system, has self-attention mechanism for detecting classification probability of each section of video, and autism detection module for detecting probability determining whether person in video is affected by autism</code></pre>
+</div>
+</div>
+</section>
+<section id="titles-of-five-patents-with-highest-domain-influence-score" class="level3">
+<h3 class="anchored" data-anchor-id="titles-of-five-patents-with-highest-domain-influence-score">Titles of five patents with highest <em>domain influence score</em></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span><span class="st">`</span><span class="at">Domain Influence</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Domain Influence</span><span class="st">`</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>dom_inf <span class="ot">&lt;-</span> data[<span class="fu">order</span>(data<span class="sc">$</span><span class="st">`</span><span class="at">Domain Influence</span><span class="st">`</span>, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ] <span class="sc">%&gt;%</span> <span class="fu">head</span>(.,<span class="dv">5</span>)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 1:"</span>, dom_inf<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 1: Digital therapeutic system for treating subject e.g. patient with behavioral, neurological, or mental health disorder, has therapeutic module which receives updated diagnostic data and outputs personal treatment plan for subject</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 2:"</span>, dom_inf<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 2: Machine learning forecast autism spectrum disorder evaluating method, involves obtaining characteristic training classifier information according to eye classifier module, and performing forecast autism spectrum disorder evaluating process</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 3:"</span>, dom_inf<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 3: Combined attention ability test and audio-visual behavior analysis based early autism screening system, has prediction module for analyzing subject test voice content extracted from audio and video to predict risk of autism subject</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 4:"</span>, dom_inf<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 4: System for evaluating mental health issues of patient, has control system that processes selection of answers and unprocessed MRI data to output mental health indication of patient using machine learning model</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Patent 5:"</span>, dom_inf<span class="sc">$</span><span class="st">`</span><span class="at">Title - DWPI</span><span class="st">`</span>[<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Patent 5: Method for using predictive modeling in mental health management system, involves generating prediction based on machine learning model trained to analyze member data, and storing prediction in association with member data</code></pre>
+</div>
+</div>
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-ailia_etal22" class="csl-entry" role="doc-biblioentry">
+Ailia, Muhammad Joan, Nishant Thakur, Jamshid Abdul-Ghafar, Chan Kwon Jung, Kwangil Yim, and Yosep Chong. 2022. <span>“Current <span>Trend</span> of <span>Artificial Intelligence Patents</span> in <span>Digital Pathology</span>: <span>A Systematic Evaluation</span> of the <span>Patent Landscape</span>.”</span> <em>Cancers</em> 14 (10): 2400. <a href="https://doi.org/10.3390/cancers14102400">https://doi.org/10.3390/cancers14102400</a>.
+</div>
+<div id="ref-bzdok_meyer-lindenberg18" class="csl-entry" role="doc-biblioentry">
+Bzdok, Danilo, and Andreas Meyer-Lindenberg. 2018. <span>“Machine <span>Learning</span> for <span>Precision Psychiatry</span>: <span>Opportunities</span> and <span>Challenges</span>.”</span> <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging</em> 3 (3): 223–30. <a href="https://doi.org/10.1016/j.bpsc.2017.11.007">https://doi.org/10.1016/j.bpsc.2017.11.007</a>.
+</div>
+<div id="ref-chekroud_etal21" class="csl-entry" role="doc-biblioentry">
+Chekroud, Adam M., Julia Bondar, Jaime Delgadillo, Gavin Doherty, Akash Wasil, Marjolein Fokkema, Zachary Cohen, et al. 2021. <span>“The Promise of Machine Learning in Predicting Treatment Outcomes in Psychiatry.”</span> <em>World Psychiatry</em> 20 (2): 154–70. <a href="https://doi.org/10.1002/wps.20882">https://doi.org/10.1002/wps.20882</a>.
+</div>
+<div id="ref-chekroud_etal16" class="csl-entry" role="doc-biblioentry">
+Chekroud, Adam Mourad, Ryan Joseph Zotti, Zarrar Shehzad, Ralitza Gueorguieva, Marcia K Johnson, Madhukar H Trivedi, Tyrone D Cannon, John Harrison Krystal, and Philip Robert Corlett. 2016. <span>“Cross-Trial Prediction of Treatment Outcome in Depression: A Machine Learning Approach.”</span> <em>The Lancet Psychiatry</em> 3 (3): 243–50. <a href="https://doi.org/10.1016/S2215-0366(15)00471-X">https://doi.org/10.1016/S2215-0366(15)00471-X</a>.
+</div>
+<div id="ref-Diagnostic22" class="csl-entry" role="doc-biblioentry">
+<em>Diagnostic and Statistical Manual of Mental Disorders</em>. 2022. 5th ed., text rev. <span>American Psychiatric Association</span>.
+</div>
+<div id="ref-drysdale_etal17" class="csl-entry" role="doc-biblioentry">
+Drysdale, Andrew T., Logan Grosenick, Jonathan Downar, Katharine Dunlop, Farrokh Mansouri, Yue Meng, Robert N. Fetcho, et al. 2017. <span>“Resting-State Connectivity Biomarkers Define Neurophysiological Subtypes of Depression.”</span> <em>Nature Medicine</em> 23 (1): 28–38. <a href="https://doi.org/10.1038/nm.4246">https://doi.org/10.1038/nm.4246</a>.
+</div>
+<div id="ref-dwyer_etal18" class="csl-entry" role="doc-biblioentry">
+Dwyer, Dominic B., Peter Falkai, and Nikolaos Koutsouleris. 2018. <span>“Machine <span>Learning Approaches</span> for <span>Clinical Psychology</span> and <span>Psychiatry</span>.”</span> <em>Annual Review of Clinical Psychology</em> 14 (1): 91–118. <a href="https://doi.org/10.1146/annurev-clinpsy-032816-045037">https://doi.org/10.1146/annurev-clinpsy-032816-045037</a>.
+</div>
+<div id="ref-fernandes_etal17" class="csl-entry" role="doc-biblioentry">
+Fernandes, Brisa S., Leanne M. Williams, Johann Steiner, Marion Leboyer, André F. Carvalho, and Michael Berk. 2017. <span>“The New Field of <span>‘Precision Psychiatry’</span>.”</span> <em>BMC Medicine</em> 15 (1): 80. <a href="https://doi.org/10.1186/s12916-017-0849-x">https://doi.org/10.1186/s12916-017-0849-x</a>.
+</div>
+<div id="ref-kendler16" class="csl-entry" role="doc-biblioentry">
+Kendler, Kenneth S. 2016. <span>“The Nature of Psychiatric Disorders.”</span> <em>World Psychiatry</em> 15 (1): 5–12. <a href="https://doi.org/10.1002/wps.20292">https://doi.org/10.1002/wps.20292</a>.
+</div>
+<div id="ref-krestel_etal21" class="csl-entry" role="doc-biblioentry">
+Krestel, Ralf, Renukswamy Chikkamath, Christoph Hewel, and Julian Risch. 2021. <span>“A Survey on Deep Learning for Patent Analysis.”</span> <em>World Patent Information</em> 65 (June): 102035. <a href="https://doi.org/10.1016/j.wpi.2021.102035">https://doi.org/10.1016/j.wpi.2021.102035</a>.
+</div>
+<div id="ref-lee_etal21" class="csl-entry" role="doc-biblioentry">
+Lee, Ellen E., John Torous, Munmun De Choudhury, Colin A. Depp, Sarah A. Graham, Ho-Cheol Kim, Martin P. Paulus, John H. Krystal, and Dilip V. Jeste. 2021. <span>“Artificial <span>Intelligence</span> for <span>Mental Health Care</span>: <span>Clinical Applications</span>, <span>Barriers</span>, <span>Facilitators</span>, and <span>Artificial Wisdom</span>.”</span> <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging</em> 6 (9): 856–64. <a href="https://doi.org/10.1016/j.bpsc.2021.02.001">https://doi.org/10.1016/j.bpsc.2021.02.001</a>.
+</div>
+<div id="ref-lutz_etal22" class="csl-entry" role="doc-biblioentry">
+Lutz, Wolfgang, Anne-Katharina Deisenhofer, Julian Rubel, Björn Bennemann, Julia Giesemann, Kaitlyn Poster, and Brian Schwartz. 2022. <span>“Prospective Evaluation of a Clinical Decision Support System in Psychological Therapy.”</span> <em>Journal of Consulting and Clinical Psychology</em> 90 (1): 90–106. <a href="https://doi.org/10.1037/ccp0000642">https://doi.org/10.1037/ccp0000642</a>.
+</div>
+<div id="ref-newson_etal20" class="csl-entry" role="doc-biblioentry">
+Newson, Jennifer J., Daniel Hunter, and Tara C. Thiagarajan. 2020. <span>“The <span>Heterogeneity</span> of <span>Mental Health Assessment</span>.”</span> <em>Frontiers in Psychiatry</em> 11.
+</div>
+<div id="ref-passos_etal22" class="csl-entry" role="doc-biblioentry">
+Passos, Ives Cavalcante, Pedro Ballester, Francisco Diego Rabelo-da-Ponte, and Flavio Kapczinski. 2022. <span>“Precision <span>Psychiatry</span>: <span>The Future Is Now</span>.”</span> <em>The Canadian Journal of Psychiatry</em> 67 (1): 21–25. <a href="https://doi.org/10.1177/0706743721998044">https://doi.org/10.1177/0706743721998044</a>.
+</div>
+<div id="ref-rush_etal06" class="csl-entry" role="doc-biblioentry">
+Rush, A. John, Madhukar H. Trivedi, Stephen R. Wisniewski, Andrew A. Nierenberg, Jonathan W. Stewart, Diane Warden, George Niederehe, et al. 2006. <span>“Acute and <span>Longer-Term Outcomes</span> in <span>Depressed Outpatients Requiring One</span> or <span>Several Treatment Steps</span>: <span>A STAR</span>*<span>D Report</span>.”</span> <em>American Journal of Psychiatry</em> 163 (11): 1905–17. <a href="https://doi.org/10.1176/ajp.2006.163.11.1905">https://doi.org/10.1176/ajp.2006.163.11.1905</a>.
+</div>
+<div id="ref-salazardepablo_etal21" class="csl-entry" role="doc-biblioentry">
+Salazar de Pablo, Gonzalo, Erich Studerus, Julio Vaquerizo-Serrano, Jessica Irving, Ana Catalan, Dominic Oliver, Helen Baldwin, et al. 2021. <span>“Implementing <span>Precision Psychiatry</span>: <span>A Systematic Review</span> of <span>Individualized Prediction Models</span> for <span>Clinical Practice</span>.”</span> <em>Schizophrenia Bulletin</em> 47 (2): 284–97. <a href="https://doi.org/10.1093/schbul/sbaa120">https://doi.org/10.1093/schbul/sbaa120</a>.
+</div>
+<div id="ref-sendak_etal20" class="csl-entry" role="doc-biblioentry">
+Sendak, Mark P., Joshua D’Arcy, Sehj Kashyap, Michael Gao, Marshall Nichols, Kristin Corey, William Ratliff, and Suresh Balu. 2020. <span>“A <span>Path</span> for <span>Translation</span> of <span>Machine Learning Products</span> into <span>Healthcare Delivery</span>.”</span> <em>EMJ Innovations</em>, January. <a href="https://doi.org/10.33590/emjinnov/19-00172">https://doi.org/10.33590/emjinnov/19-00172</a>.
+</div>
+<div id="ref-souery_etal11" class="csl-entry" role="doc-biblioentry">
+Souery, Daniel, Alessandro Serretti, Raffaella Calati, Pierre Oswald, Isabelle Massat, Anastasios Konstantinidis, Sylvie Linotte, et al. 2011. <span>“Switching <span>Antidepressant Class Does Not Improve Response</span> or <span>Remission</span> in <span>Treatment-Resistant Depression</span>.”</span> <em>Journal of Clinical Psychopharmacology</em> 31 (4): 512–16. <a href="https://doi.org/10.1097/JCP.0b013e3182228619">https://doi.org/10.1097/JCP.0b013e3182228619</a>.
+</div>
+<div id="ref-strategicmarketresearch21" class="csl-entry" role="doc-biblioentry">
+Strategic Market Research, Base. 2021. <span>“Behavioral <span>Health Software Market Trends</span>.”</span> 39728966.
+</div>
+<div id="ref-trivedi_etal06" class="csl-entry" role="doc-biblioentry">
+Trivedi, Madhukar H., A. John Rush, Stephen R. Wisniewski, Andrew A. Nierenberg, Diane Warden, Louise Ritz, Grayson Norquist, et al. 2006. <span>“Evaluation of <span>Outcomes With Citalopram</span> for <span>Depression Using Measurement-Based Care</span> in <span>STAR</span>*<span>D</span>: <span>Implications</span> for <span>Clinical Practice</span>.”</span> <em>American Journal of Psychiatry</em> 163 (1): 28–40. <a href="https://doi.org/10.1176/appi.ajp.163.1.28">https://doi.org/10.1176/appi.ajp.163.1.28</a>.
+</div>
+<div id="ref-yahata_etal16" class="csl-entry" role="doc-biblioentry">
+Yahata, Noriaki, Jun Morimoto, Ryuichiro Hashimoto, Giuseppe Lisi, Kazuhisa Shibata, Yuki Kawakubo, Hitoshi Kuwabara, et al. 2016. <span>“A Small Number of Abnormal Brain Connections Predicts Adult Autism Spectrum Disorder.”</span> <em>Nature Communications</em> 7 (1): 11254. <a href="https://doi.org/10.1038/ncomms11254">https://doi.org/10.1038/ncomms11254</a>.
+</div>
+<div id="ref-zanardi_etal21" class="csl-entry" role="doc-biblioentry">
+Zanardi, Raffaella, Dario Prestifilippo, Chiara Fabbri, Cristina Colombo, Eduard Maron, and Alessandro Serretti. 2021. <span>“Precision Psychiatry in Clinical Practice.”</span> <em>International Journal of Psychiatry in Clinical Practice</em> 25 (1): 19–27. <a href="https://doi.org/10.1080/13651501.2020.1809680">https://doi.org/10.1080/13651501.2020.1809680</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>DWPI smart search term<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>original abstract<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>publication date<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

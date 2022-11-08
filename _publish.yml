@@ -1,0 +1,6 @@
+- source: patents.qmd
+  quarto-pub:
+    - id: ac228c0c-e14d-4161-a7fc-56c9a43a224e
+      url: 'https://quartopub.com/sites/anneokk/patent_review'
+    - id: edea5ce0-acc0-483f-950e-38bcde415e23
+      url: 'https://quartopub.com/sites/anneokk/patent_review_nocode'
