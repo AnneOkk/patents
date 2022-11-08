@@ -586,6 +586,7 @@ data_cpc_co <- separate_rows(data,`CPC - Current - DWPI`,sep = " | ") %>%
   .[!grepl("\\|", .$`CPC - Current - DWPI`),] %>% 
   .[!is.na(.$`CPC - Current - DWPI`),] %>% 
   select(`Publication Number`, `CPC - Current - DWPI` )  %>% 
+  mutate(`CPC - Current - DWPI` = substr(.$`CPC - Current - DWPI`, 1, 4)) %>% 
   fastDummies::dummy_cols(., select_columns = "CPC - Current - DWPI") %>% 
   select(-`CPC - Current - DWPI`) %>% data.frame(.) %>% 
   group_by(Publication.Number) %>% 
@@ -594,6 +595,7 @@ data_cpc_co <- separate_rows(data,`CPC - Current - DWPI`,sep = " | ") %>%
   as.data.frame()
 
 names(data_cpc_co) <- gsub(".*_","",names(data_cpc_co))
+data_cpc_co$Publication.Number <- substr(data_cpc_co$Publication.Number, 1, 4)
 
 data_cpc_co_crossprod <- data_cpc_co[,-1] %>% 
   select(-sum) %>% 
@@ -609,12 +611,107 @@ data_cpc_co_crossprod <- data.frame(data_cpc_co_crossprod) %>%
   filter(value > 5) %>% 
   pivot_wider(names_from = name, values_from=value)
 
-```
-```{r}
+data_links <- data_cpc_co_crossprod %>%  
+  pivot_longer(., cols = -Pub_Num) %>% 
+  filter(., value > 0) %>% 
+  rename(source = Pub_Num, 
+         target = name,
+         importance = value) %>%                                     # Consolidate duplicates
+  group_by(source, target) %>%
+  dplyr::summarise(importance = sum(importance)) %>% 
+  as.data.frame() %>% 
+  .[!duplicated(data.frame(t(apply(.[1:2], 1, sort)))),]
 
-rownames(data_cpc_co_crossprod) <- data_cpc_co_crossprod$Pub_Num
-data_cpc_co_crossprod <- data_cpc_co_crossprod %>% select(-Pub_Num)
-  
+# Turn it into igraph object
+network <- graph_from_data_frame(d=data_links, directed=F) 
+ 
+# Make a palette of 3 colors
+library(RColorBrewer)
+coul  <- brewer.pal(3, "Set1") 
+ 
+# Create a vector of color
+my_color <- coul[as.numeric(as.factor(V(network)$carac))]
+ 
+# Make the plot
+plot(network, vertex.color=my_color, edge.width=E(network)$importance*0.02 )
+
+```
+
+### CPC Cooccurrences - specific
+
+```{r}
+data_cpc_co <- separate_rows(data,`CPC - Current - DWPI`,sep = " | ") %>% 
+  .[!grepl("\\|", .$`CPC - Current - DWPI`),] %>% 
+  .[!is.na(.$`CPC - Current - DWPI`),] %>% 
+  select(`Publication Number`, `CPC - Current - DWPI` )  %>% 
+  mutate(`CPC - Current - DWPI` = sub("^(....)0{1,3}", "\\1", .$`CPC - Current - DWPI`)) %>% 
+  fastDummies::dummy_cols(., select_columns = "CPC - Current - DWPI") %>% 
+  select(-`CPC - Current - DWPI`) %>% data.frame(.) %>% 
+  group_by(Publication.Number) %>% 
+  summarise_if(is.numeric,sum) %>%
+  mutate(sum = rowSums(across(where(is.numeric)), na.rm=TRUE)) %>% 
+  as.data.frame()
+
+names(data_cpc_co) <- gsub(".*_","",names(data_cpc_co))
+data_cpc_co$Publication.Number <- substr(data_cpc_co$Publication.Number, 1, 4)
+
+data_cpc_co_crossprod <- data_cpc_co[,-1] %>% 
+  select(-sum) %>% 
+  as.matrix(.) %>% 
+  crossprod(.)  # Same as: t(X) %*% X
+
+diag(data_cpc_co_crossprod) <- 0       # (b/c you don't count co-occurrences of an aspect with itself)
+
+data_cpc_co_crossprod <- data.frame(data_cpc_co_crossprod) %>% 
+  mutate(Pub_Num = rownames(data_cpc_co_crossprod)) %>% 
+  pivot_longer(-Pub_Num) %>% 
+  group_by(Pub_Num) %>% 
+  filter(value > 5) %>% 
+  pivot_wider(names_from = name, values_from=value)
+
+data_links <- data_cpc_co_crossprod %>%  
+  pivot_longer(., cols = -Pub_Num) %>% 
+  filter(., value > 0) %>% 
+  rename(source = Pub_Num, 
+         target = name,
+         importance = value) %>%                                     # Consolidate duplicates
+  group_by(source, target) %>%
+  dplyr::summarise(importance = sum(importance)) %>% 
+  as.data.frame() %>% 
+  .[!duplicated(data.frame(t(apply(.[1:2], 1, sort)))),] %>% 
+  filter(importance > 9)
+
+
+data_links %>% mutate()
+
+nodes <- data.frame(
+    name=LETTERS[1:10],
+    carac=c( rep("young",3),rep("adult",2), rep("old",5))
+    )
+
+
+# Turn it into igraph object
+network <- graph_from_data_frame(d=data_links, directed=F) 
+ 
+# Make a palette of 3 colors
+library(RColorBrewer)
+coul  <- brewer.pal(3, "Set1") 
+ 
+# Create a vector of color
+my_color <- coul[as.numeric(as.factor(V(network)$carac))]
+ 
+# Make the plot
+plot(network, vertex.color=my_color, edge.width=E(network)$importance*0.5 )
+
+data$`CPC - Current - DWPI`
+
+```
+
+
+```{r}
+data_cpc_co_crossprod <- column_to_rownames(data_cpc_co_crossprod, var = "Pub_Num")
+data_cpc_co_crossprod[is.na(data_cpc_co_crossprod)] <- 0
+
 bip = network(data_cpc_co_crossprod,
               matrix.type = "bipartite",
               ignore.eval = FALSE,
