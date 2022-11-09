@@ -92,15 +92,20 @@ Second, we analysed information about temporal and regional developments and the
 ## Read in data
 library("readxl")
 getwd()
-data <- read_excel("../../data/Search_results/2022-11-07_exported.xlsx", sheet = "Sheet1")
-
-
-duplicated(data$`Publication Number`)
+data <- read_excel("../../data/Search_results/2022-11-09_exported.xlsx", sheet = "Sheet1")
 ```
 
 ```{r}
 # remove all rows that contain "exclude" in Include/exclude column
 data <- data[grepl("Include", data$`Include/exclude`),]
+library(dplyr)
+library(stringr)
+data <- data %>% #make all first letter capital 
+    mutate_if(is.character, ~ str_to_title(.x))
+
+data$`Illness group` <- gsub("Adhd", "ADHD", data$`Illness group`)
+data$`Illness group` <- gsub("Ptsd", "PTSD", data$`Illness group`)
+
 ```
 
 ## Patent content
@@ -484,8 +489,81 @@ ap_top_terms %>%
 ### Content relationships
 
 ```{r}
-data
+# make df simple
+data$`Illness group` <- gsub("Psychosis", "Schizophrenia", data$`Illness group` )
+
+data$Data <- gsub("Mental Health", "Clinical History", data$Data)
+data$Data <- gsub("Physical Health", "Clinical History", data$Data)
+data$Data <- gsub("Clinical Records", "Clinical History", data$Data)
 ```
+
+
+```{r}
+disord.split <- strsplit(data$`Illness group`, ",") 
+lev <- unlist(disord.split) %>%  trimws(.) %>%  unique(.)
+disord.dummy <- lapply(disord.split, function(x) table(factor(x, levels=lev)))
+
+pp.split <- strsplit(data$`Precision psychiatry domain`, ",") 
+lev <- unlist(pp.split) %>%  trimws(.) %>%  unique(.)
+pp.dummy <- lapply(pp.split, function(x) table(factor(x, levels=lev)))
+
+feed.split <- strsplit(data$`Feedback type (in case of treatment/ predictive)`, ",") 
+lev <- unlist(feed.split) %>%  trimws(.) %>%  unique(.)
+feed.dummy <- lapply(feed.split, function(x) table(factor(x, levels=lev)))
+
+interv.split <- strsplit(data$`Intervention type`, ",") 
+lev <- unlist(interv.split) %>%  trimws(.) %>%  unique(.)
+interv.dummy <- lapply(interv.split, function(x) table(factor(x, levels=lev)))
+
+data.split <- strsplit(data$Data, ",") 
+lev <- unlist(data.split) %>%  trimws(.) %>%  unique(.)
+data.dummy <- lapply(data.split, function(x) table(factor(x, levels=lev)))
+
+data$Relevancy <- as.numeric(data$Relevancy)
+data$`Probability of Grant` <- as.numeric(data$`Probability of Grant`)
+data$`Domain Influence` <- as.numeric(data$`Domain Influence`)
+data$`Combined Patent Impact` <- as.numeric(data$`Combined Patent Impact`)
+data$`Count of Citing Patents` <- as.numeric(data$`Count of Citing Patents`)
+
+library(countrycode)
+data$continent <- countrycode(sourcevar = data$`Assignee Country`,
+                            origin = "country.name",
+                            destination = "continent")
+
+
+data$continent <- as.factor(data$continent)
+
+data_dummy <-  cbind(data, do.call(rbind, disord.dummy), do.call(rbind, pp.dummy), do.call(rbind, feed.dummy), do.call(rbind, interv.dummy), do.call(rbind, data.dummy))
+```
+
+```{r}
+names(data_dummy) <- make.unique(names(data_dummy))
+
+data_dummy_num <- data_dummy %>% 
+  select_if(function(.) is.numeric(.) | is.factor(.)) %>% 
+  mutate_if(is.factor, ~as.numeric(.)) %>% 
+  na.omit(.) %>% 
+  Filter(function(x) sd(x) != 0, .)
+```
+
+#### Overall 
+
+```{r}
+library(reshape2)
+cormat <- round(cor(data_dummy_num),2)
+melted_cormat <- melt(cormat) %>% filter(., !grepl("Other", Var1), !grepl("Other", Var2))
+
+ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile()
+```
+
+#### Data types and illnesses
+
+```{r}
+data_dummy_data_illness <- data_dummy_num %>% select()
+```
+
+
 
 
 
@@ -818,20 +896,6 @@ ggplot(aes(x = Pub_year, y = n, group = `Publication Number`)) +
            x = "\nPatent publication year") + 
   theme_bw(base_size = 15) +
   theme(text = element_text(family = "Times New Roman"))
-```
-
-```{r}
-citing_pat <- data_cite$`Publication Number`
-
-data_cite <- data_cite %>% 
-  select(`Publication Number`, `Citing Patents` )  %>% 
-  filter(.$`Citing Patents` %in% citing_pat) %>%
-  fastDummies::dummy_cols(., select_columns = "Citing Patents") %>% 
-  select(-`Citing Patents`) %>% data.frame(.)
-
-row.names(data_cite) <- data_cite$Publication.Number
-
-data_cite[,1] <- NULL
 ```
 
 
