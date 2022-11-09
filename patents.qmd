@@ -210,26 +210,7 @@ ggplot(data_types_freq, aes(x = reorder(data_types, -n), y = n)) +
   theme_classic() +
   theme(text = element_text(family = "Times New Roman"))
 ```
-### Most cited
 
-
-```{r}
-data_cite <- separate_rows(data,`Citing Patents`,sep = " | ") %>% 
-  .[!grepl("\\|", .$`Citing Patents`),] %>% 
-  .[!is.na(.$`Citing Patents`),]
-
-citing_pat <- data_cite$`Publication Number`
-
-data_cite <- data_cite %>% 
-  select(`Publication Number`, `Citing Patents` )  %>% 
-  filter(.$`Citing Patents` %in% citing_pat) %>%
-  fastDummies::dummy_cols(., select_columns = "Citing Patents") %>% 
-  select(-`Citing Patents`) %>% data.frame(.)
-
-row.names(data_cite) <- data_cite$Publication.Number
-
-data_cite[,1] <- NULL
-```
 
 
 
@@ -500,6 +481,15 @@ ap_top_terms %>%
 
 ```
 
+### Content relationships
+
+```{r}
+data
+```
+
+
+
+
 ## Trend data
 
 Second, we analysed information about temporal and regional developments and the most active companies and inventors. Specifically, we present the annual trend of patent publications between January 2015 and October 2022, the regional distribution of current assignees, and the names of the top 15 assignees.
@@ -582,6 +572,11 @@ ggplot(aes(x = Pub_year, y = n, group = cpc_mean)) +
 ### CPC Cooccurrences 
 
 ```{r}
+library(GGally)
+library(network)
+library(sna)
+library(intergraph)
+
 data_cpc_co <- separate_rows(data,`CPC - Current - DWPI`,sep = " | ") %>% 
   .[!grepl("\\|", .$`CPC - Current - DWPI`),] %>% 
   .[!is.na(.$`CPC - Current - DWPI`),] %>% 
@@ -600,15 +595,15 @@ data_cpc_co$Publication.Number <- substr(data_cpc_co$Publication.Number, 1, 4)
 data_cpc_co_crossprod <- data_cpc_co[,-1] %>% 
   select(-sum) %>% 
   as.matrix(.) %>% 
-  crossprod(.)  # Same as: t(X) %*% X
+  crossprod(.)  
 
-diag(data_cpc_co_crossprod) <- 0       # (b/c you don't count co-occurrences of an aspect with itself)
+diag(data_cpc_co_crossprod) <- 0       
 
 data_cpc_co_crossprod <- data.frame(data_cpc_co_crossprod) %>% 
   mutate(Pub_Num = rownames(data_cpc_co_crossprod)) %>% 
   pivot_longer(-Pub_Num) %>% 
   group_by(Pub_Num) %>% 
-  filter(value > 5) %>% 
+  filter(value > 7) %>%  #set value for minimum coo-ccureences
   pivot_wider(names_from = name, values_from=value)
 
 data_links <- data_cpc_co_crossprod %>%  
@@ -616,7 +611,7 @@ data_links <- data_cpc_co_crossprod %>%
   filter(., value > 0) %>% 
   rename(source = Pub_Num, 
          target = name,
-         importance = value) %>%                                     # Consolidate duplicates
+         importance = value) %>%                                     
   group_by(source, target) %>%
   dplyr::summarise(importance = sum(importance)) %>% 
   as.data.frame() %>% 
@@ -634,6 +629,8 @@ my_color <- coul[as.numeric(as.factor(V(network)$carac))]
  
 # Make the plot
 plot(network, vertex.color=my_color, edge.width=E(network)$importance*0.02 )
+
+ggnet2(network, label = TRUE, label.size = 3.5, edge.size=E(network)$importance*0.005, max_size = 5, mode = "kamadakawai") + guides(size = "none")
 
 ```
 
@@ -653,20 +650,19 @@ data_cpc_co <- separate_rows(data,`CPC - Current - DWPI`,sep = " | ") %>%
   as.data.frame()
 
 names(data_cpc_co) <- gsub(".*_","",names(data_cpc_co))
-data_cpc_co$Publication.Number <- substr(data_cpc_co$Publication.Number, 1, 4)
 
 data_cpc_co_crossprod <- data_cpc_co[,-1] %>% 
   select(-sum) %>% 
   as.matrix(.) %>% 
-  crossprod(.)  # Same as: t(X) %*% X
+  crossprod(.) 
 
-diag(data_cpc_co_crossprod) <- 0       # (b/c you don't count co-occurrences of an aspect with itself)
+diag(data_cpc_co_crossprod) <- 0      
 
 data_cpc_co_crossprod <- data.frame(data_cpc_co_crossprod) %>% 
   mutate(Pub_Num = rownames(data_cpc_co_crossprod)) %>% 
   pivot_longer(-Pub_Num) %>% 
   group_by(Pub_Num) %>% 
-  filter(value > 5) %>% 
+  filter(value > 0) %>% #set value for minimum coo-ccureences
   pivot_wider(names_from = name, values_from=value)
 
 data_links <- data_cpc_co_crossprod %>%  
@@ -674,98 +670,55 @@ data_links <- data_cpc_co_crossprod %>%
   filter(., value > 0) %>% 
   rename(source = Pub_Num, 
          target = name,
-         importance = value) %>%                                     # Consolidate duplicates
+         importance = value) %>%                                     
   group_by(source, target) %>%
   dplyr::summarise(importance = sum(importance)) %>% 
   as.data.frame() %>% 
   .[!duplicated(data.frame(t(apply(.[1:2], 1, sort)))),] %>% 
-  filter(importance > 9)
+  filter(importance > 5)  #set value for minimum coo-ccureences
 
 
-data_links %>% mutate()
+data_links_named <- data_links %>% mutate_at(c("source", "target"),
+                                             list(~case_when(
+                                               . == "A61B5165" ~ "(A61B5165) Evaluating mental health",
+                                               . == "A61B54088" ~ "(A61B54088) Diagnosing cognitive diseases",
+                                               . == "A61B57264" ~ "(A61B57264) Classification of physiological\n signals using ML",
+                                               . == "A61B57267" ~ "(A61B57267) Training a mental health \nclassification device",
+                                               . == "A61B57275" ~ "(A61B57275) Predicting development of a medical\n condition based on physiological measurements",
+                                               . == "G06N2000" ~ "(G06N2000) Machine learning",
+                                               . == "G06N30454" ~ "(G06N30454) Neural nets based on biological models",
+                                               . == "G06N308" ~ "(G06N308) Learning based on biological models",
+                                               . == "G16H1020" ~ "(G16H1020) ICT for processing electronic \nclinical trials or questionnaires",
+                                               . == "G16H1060" ~ "(G16H1060) ICT for processing electronic patient records",
+                                               . == "G16H2010" ~ "(G16H2010) ICT for monitoring patient \ncompliance (drugs, medication)",
+                                               . == "G16H2030" ~ "(G16H2030) ICT for monitoring patient \ncompliance (physical therapies/activities)",
+                                               . == "G16H2070" ~ "(G16H2070) ICT for psychological therapies",
+                                               . == "G16H4067" ~ "(G16H4067) ICT specially adapted for management \nof remote healthcare resources",
+                                               . == "G16H5020" ~ "(G16H5020) ICT for for computer-aided diagnosis",
+                                               . == "G16H5030" ~ "(G16H5030) ICT for calculating health indices for\n individual health risk assessment",
+                                               . == "G16H5070" ~ "(G16H5070) ICT for mining of medical data"
+                                             ))
+)
+     
 
-nodes <- data.frame(
-    name=LETTERS[1:10],
-    carac=c( rep("young",3),rep("adult",2), rep("old",5))
-    )
+nodes <- 
+  data_links_named %>% 
+  select(source, target) 
 
+nodes <- 
+data.frame(source = c(nodes[,"source"], nodes[,"target"])) %>% 
+  mutate(carac = substr(.$source, 2, 5)) %>% 
+  mutate(carac = if_else(grepl("A61B",.$carac),'(A61B) Diagnosis',
+                 if_else(grepl("G06N",.$carac),'(G06N) Computing',
+                 if_else(grepl("G16H",.$carac),'(G16H) Healthcare informatics', "none")))) %>% 
+  rename(name = source) %>% 
+  .[!duplicated(.$name), ]                                        
 
 # Turn it into igraph object
-network <- graph_from_data_frame(d=data_links, directed=F) 
- 
-# Make a palette of 3 colors
-library(RColorBrewer)
-coul  <- brewer.pal(3, "Set1") 
- 
-# Create a vector of color
-my_color <- coul[as.numeric(as.factor(V(network)$carac))]
- 
-# Make the plot
-plot(network, vertex.color=my_color, edge.width=E(network)$importance*0.5 )
+network <- graph_from_data_frame(d=data_links_named, vertices=nodes, directed=F)  
 
-data$`CPC - Current - DWPI`
+ggnet2(network, label = TRUE, label.size = 3.5, color = "carac", size = "degree", palette = "Set3", edge.size=E(network)$importance*0.1, max_size = 30, mode = "kamadakawai") + guides(size = "none")
 
-```
-
-
-```{r}
-data_cpc_co_crossprod <- column_to_rownames(data_cpc_co_crossprod, var = "Pub_Num")
-data_cpc_co_crossprod[is.na(data_cpc_co_crossprod)] <- 0
-
-bip = network(data_cpc_co_crossprod,
-              matrix.type = "bipartite",
-              ignore.eval = FALSE,
-              names.eval = "weights")
-```
-
-
-
-```{r}
-data_cite <- data_cite %>%
-  dplyr::group_by(`Publication Number`)  %>% 
-  mutate(Pub_year =  as.numeric(Pub_year)) %>%
-  count(Pub_year,`Publication Number`) %>% 
-  filter(., n > 4)
-
-data_cite %>%
-ggplot(aes(x = Pub_year, y = n, group = `Publication Number`)) +
-      geom_line(aes(color=`Publication Number`)) + 
-      geom_point(aes(color = `Publication Number`)) +
-      labs(title = "Annual trend data of CPC classes",
-           y = "Number of patents\n",
-           x = "\nPatent publication year") + 
-  theme_bw(base_size = 15) +
-  theme(text = element_text(family = "Times New Roman"))
-```
-
-
-### Citation trends
-
-```{r}
-# create CPC df
-data_cite <- separate_rows(data,`Citing Patents`,sep = " | ")
-data_cite <- data_cite[!grepl("\\|", data_cite$`Citing Patents`),] 
-data_cite <- data_cite[!is.na(data_cite$`Citing Patents`),]
-```
-
-
-```{r}
-# Top cites codes over all years
-data_cite <- data_cite %>%
-  dplyr::group_by(`Publication Number`)  %>% 
-  mutate(Pub_year =  as.numeric(Pub_year)) %>%
-  count(Pub_year,`Publication Number`) %>% 
-  filter(., n > 4)
-
-data_cite %>%
-ggplot(aes(x = Pub_year, y = n, group = `Publication Number`)) +
-      geom_line(aes(color=`Publication Number`)) + 
-      geom_point(aes(color = `Publication Number`)) +
-      labs(title = "Annual trend data of CPC classes",
-           y = "Number of patents\n",
-           x = "\nPatent publication year") + 
-  theme_bw(base_size = 15) +
-  theme(text = element_text(family = "Times New Roman"))
 ```
 
 
@@ -839,23 +792,70 @@ ggplot(Assignees_freq, aes(x = reorder(Assignees, -n), y = n)) +
 
 Third, we present aggregated information on patent evaluation metrics, such as patent strategic importance (based on DI intelligence), the probability that the patented is granted (based on DI intelligence), and domain influence (based on DI intelligence). These metrics rely on machine learning techniques with over 150 input variables from several general categories which reflect aspects of the patent influential to patent importance and future event occurrences. The algorithm used to calculate these metrics is proprietary, which includes both the exact variables used and how those variables affect the score. The general categories considered are: Litigation (What has been the litigation activity on this and similar historical patents?), up-/downstream events (Have there been upstream applications on this and similar historical patents, such as continuations or continuations in part from a previous record? Have there been downstream applications on this and similar historical patents, such as new family members, child applications, divisionals, or continuations on this record?), legal status (What is the pattern of legal status events present on the record? What do the patterns of historical patents tell us about likely future events?), patent text (What patterns can be identified in the text of the patent, for example within the claims?), citations (What patterns can be identified in the citation activity of the patent, both forward and backward? Which aspects of citation data can be used to differentiate one citation from another, especially the impact of one citation compared to another?), technology (classifications) (What is the different typical behavior of patents and patentees across different technology classifications? How do some industries act differently from others?), filing type (What is the typical behavior of one type of patent over another (e.g application, design, utility model)?), family/filing breadth (What does the patent family structure and location of filings tell us about the importance of a patent and the behavior of the patentee?), parties involved (What effect does the combination of interested parties, and the changes to those parties, have on the lifespan of a patent?). 
  
+### Citations
+
+```{r}
+data_cite <- separate_rows(data,`Citing Patents`,sep = " | ") %>% 
+  .[!grepl("\\|", .$`Citing Patents`),] %>% 
+  .[!is.na(.$`Citing Patents`),]
+```
+
+
+```{r}
+# Top cites codes over all years
+data_cite <- data_cite %>%
+  dplyr::group_by(`Publication Number`)  %>% 
+  mutate(Pub_year =  as.numeric(Pub_year)) %>%
+  count(Pub_year,`Publication Number`) %>% 
+  filter(., n > 4)
+
+data_cite %>%
+ggplot(aes(x = Pub_year, y = n, group = `Publication Number`)) +
+      geom_line(aes(color=`Publication Number`)) + 
+      geom_point(aes(color = `Publication Number`)) +
+      labs(title = "Annual trend data of citations for patents with > 4 citations",
+           y = "Number of citations\n",
+           x = "\nPatent publication year") + 
+  theme_bw(base_size = 15) +
+  theme(text = element_text(family = "Times New Roman"))
+```
+
+```{r}
+citing_pat <- data_cite$`Publication Number`
+
+data_cite <- data_cite %>% 
+  select(`Publication Number`, `Citing Patents` )  %>% 
+  filter(.$`Citing Patents` %in% citing_pat) %>%
+  fastDummies::dummy_cols(., select_columns = "Citing Patents") %>% 
+  select(-`Citing Patents`) %>% data.frame(.)
+
+row.names(data_cite) <- data_cite$Publication.Number
+
+data_cite[,1] <- NULL
+```
+
 
 ### Titles of five patents with highest *Strategic Importance* score
+
 ```{r}
 data$`Strategic Importance` <- as.numeric(data$`Strategic Importance`)
 
 strat_imp <- data[order(data$`Strategic Importance`, decreasing = TRUE), ] %>% head(.,5)
 
-cat("Patent 1:", strat_imp$`Title - DWPI`[1])
-
-cat("Patent 2:", strat_imp$`Title - DWPI`[2])
-
-cat("Patent 3:", strat_imp$`Title - DWPI`[3])
-
-cat("Patent 4:", strat_imp$`Title - DWPI`[4])
-
-cat("Patent 5:", strat_imp$`Title - DWPI`[5])
+si1 <- strat_imp$`Title - DWPI`[1]
+si2 <- strat_imp$`Title - DWPI`[2]
+si3 <- strat_imp$`Title - DWPI`[3]
+si4 <- strat_imp$`Title - DWPI`[4]
+si5 <- strat_imp$`Title - DWPI`[5]
 ```
+
+
+Patent 1: `r si1`
+Patent 2: `r si2`
+Patent 3: `r si3`
+Patent 4: `r si4`
+Patent 5: `r si5`
+
 
 ### Titles of five patents with highest *Probability of being granted*
 
@@ -865,16 +865,19 @@ data$`Probability of Grant` <- as.numeric(data$`Probability of Grant`)
 
 grant_prob <- data[order(data$`Probability of Grant`, decreasing = TRUE), ] %>% head(.,5)
 
-cat("Patent 1:", grant_prob$`Title - DWPI`[1])
+gp1 <- grant_prob$`Title - DWPI`[1]
+gp2 <- grant_prob$`Title - DWPI`[2]
+gp3 <- grant_prob$`Title - DWPI`[3]
+gp4 <- grant_prob$`Title - DWPI`[4]
+gp5 <- grant_prob$`Title - DWPI`[5]
 
-cat("Patent 2:", grant_prob$`Title - DWPI`[2])
-
-cat("Patent 3:", grant_prob$`Title - DWPI`[3])
-
-cat("Patent 4:", grant_prob$`Title - DWPI`[4])
-
-cat("Patent 5:", grant_prob$`Title - DWPI`[5])
 ```
+
+Patent 1: `r gp1`
+Patent 2: `r gp2`
+Patent 3: `r gp3`
+Patent 4: `r gp4`
+Patent 5: `r gp5`
 
 ### Titles of five patents with highest *domain influence score*
 
@@ -884,16 +887,17 @@ data$`Domain Influence` <- as.numeric(data$`Domain Influence`)
 
 dom_inf <- data[order(data$`Domain Influence`, decreasing = TRUE), ] %>% head(.,5)
 
-cat("Patent 1:", dom_inf$`Title - DWPI`[1])
-
-cat("Patent 2:", dom_inf$`Title - DWPI`[2])
-
-cat("Patent 3:", dom_inf$`Title - DWPI`[3])
-
-cat("Patent 4:", dom_inf$`Title - DWPI`[4])
-
-cat("Patent 5:", dom_inf$`Title - DWPI`[5])
+di1 <- dom_inf$`Title - DWPI`[1]
+di2 <- dom_inf$`Title - DWPI`[2]
+di3 <- dom_inf$`Title - DWPI`[3]
+di4 <- dom_inf$`Title - DWPI`[4]
+di5 <- dom_inf$`Title - DWPI`[5]
 ```
 
+Patent 1: `r di1`
+Patent 2: `r di2`
+Patent 3: `r di3`
+Patent 4: `r di4`
+Patent 5: `r di5`
 
 
