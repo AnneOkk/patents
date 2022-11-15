@@ -6,6 +6,7 @@ execute:
   echo: true
   warning: false
   message: false
+  cache: true
 format: 
   #docx:
    # reference-doc: "config/template_word.docx"
@@ -92,7 +93,8 @@ Second, we analysed information about temporal and regional developments and the
 ## Read in data
 library("readxl")
 getwd()
-data <- read_excel("../../data/Search_results/2022-11-09_exported.xlsx", sheet = "Sheet1")
+data <- read_excel("../../data/Search_results/2022-11-12_exported.xlsx", sheet = "Sheet1")
+source("../../R/custom-functions.R")
 ```
 
 ```{r}
@@ -271,7 +273,7 @@ ud_model <- udpipe_load_model(ud_model$file_model)
 x <- udpipe_annotate(ud_model, x = titles$Text)
 x <- as.data.frame(x)
 
-titles <- subset(x, upos %in% c("NOUN")) 
+titles <- subset(x, upos %in% c("PROPN")) 
 titles <- data.table(unique(titles$sentence))
 ```
 
@@ -284,13 +286,17 @@ library(SemNetCleaner)
 
 corpus <-  Corpus(x = VectorSource(x = titles$V1))
 
-titles.text <- corpus %>% 
+titles.text <- corpus |>
   tm_map(removePunctuation) %>% 
   tm_map(removeNumbers) %>% 
-  tm_map(removeWords, c(stopwords('english'), "The", "involves", "based", "using", 
-                        "machine learning", "artificial intelligence", "mental health", "mental illness")) %>% 
-  tm_map(PlainTextDocument)  |>
-  tm_map(stemDocument)
+  tm_map(removeWords, c(stopwords('english'), "For", "On", "Whose", "In", "And", 
+                        "That", "A", "Which", "From", "AndOr", "Andor", "One",
+                        "Each", "To", "With", "As", "Of", "Is", "Or", "Eg", "By", 
+                        "Whether", "Second", 
+                        "Has", "Used", "Involves", "Based", "Using", "Providing",
+                        "Comprises", "Obtaining", "Generating", "Collecting", "Determining",
+                        "Machine Learning", "Artificial Intelligence", "Mental Health", "Mental Illness")) %>% 
+  tm_map(PlainTextDocument) 
 
 
 # Recover data into original tibble.
@@ -313,7 +319,7 @@ word.count %>% head(10)
 wordcloud(
   words = word.count$word, 
   freq = word.count$n, 
-  min.freq = 5, 
+  min.freq = 10, 
   colors = viridis(n = 9)
 )
 ```
@@ -467,7 +473,7 @@ library(topicmodels)
 rowTotals <- apply(TextDoc , 1, sum)
 TextDoc_dtm   <- TextDoc[rowTotals> 3, ] 
 # set a seed so that the output of the model is predictable
-ap_lda <- LDA(TextDoc_dtm, k = 20, control = list(seed = 1234))
+ap_lda <- LDA(TextDoc_dtm, k = 10, control = list(seed = 1234))
 
 ap_topics <- tidy(ap_lda, matrix = "beta")
 
@@ -490,34 +496,125 @@ ap_top_terms %>%
 
 ```{r}
 # make df simple
-data$`Illness group` <- gsub("Psychosis", "Schizophrenia", data$`Illness group` )
+library(stringi)
 
-data$Data <- gsub("Mental Health", "Clinical History", data$Data)
-data$Data <- gsub("Physical Health", "Clinical History", data$Data)
-data$Data <- gsub("Clinical Records", "Clinical History", data$Data)
+data$`Illness group` <- stri_replace_all_regex(data_fac$`Illness group`,
+                                  pattern=c('Psychosis', 
+                                            'Suicide', 
+                                            'Erectile Dysfunction',
+                                            'Postpartum Depression', 
+                                            'Depression, Anxiety, Mania, Panic Disorder',
+                                            'Autism, Depression, Anxiety, ADHD', 
+                                            'Biploar Disorder',
+                                            'Anxiety, Depression', 
+                                            'Agitation', 
+                                            'Mood Disorders',
+                                            'Schizophrenia, Biploar',
+                                            'Depression, ADHD',
+                                            'Depression, PTSD, Suicidality',
+                                            'Bipolar, Schizophrenia',
+                                            'Depression, Anxiety',
+                                            'Unspecific'),
+                                  replacement=c('Schizophrenia', 
+                                                'Suicidality', 
+                                                'Sexual Disorder',
+                                                'Depression', 
+                                                'Multiple', 
+                                                'Multiple', 
+                                                'Biploar',
+                                                'Multiple',
+                                                'Mood Disorder',
+                                                'Mood Disorder',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple'),
+                                  vectorize=FALSE)
+
+data <- data %>% 
+  group_by(grp = `Illness group`) %>%
+   mutate(`Illness group` = replace(`Illness group`, n() < 5, "Other")) %>%
+   ungroup %>%
+   select(-grp)
+
+data$`Precision psychiatry domain` <- stri_replace_all_regex(data$`Precision psychiatry domain`,
+                                  pattern=c('Diagnostic, Prognostic, Treatment, Predictive',
+                                            'Diagnostic, Predictive, Prognostic',
+                                            'Diagnostic, Predictive, Treatment',
+                                            'Treatment, Predictive',
+                                            'Treatment, Diagnostic',
+                                            'Diagnostic, Predictive',
+                                            'Predictive, Treatment',
+                                            'Prognostic, Treatment',
+                                            'Diagnostic, Prognostic',
+                                            'Diagnostic, Treatment'),
+                                  replacement=c('Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple'),
+                                  vectorize=FALSE)
+
+data$`Feedback type (in case of treatment/ predictive)` <- stri_replace_all_regex(data$`Feedback type (in case of treatment/ predictive)`,
+                                  pattern=c('Precision Treatment, Treatment Selection',
+                                            'Treatment, Treatment Selection',
+                                            'Treatment Selection, Treatment Adjustment',
+                                            'Treatment Selection, Precision Treatment',
+                                            'Treatment Adjustment, Precision Treatment'),
+                                  replacement=c('Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple'),
+                                  vectorize=FALSE)
+
+data$`Intervention type` <- stri_replace_all_regex(data$`Intervention type`,
+                                  pattern=c('Pharmacotherapy, Psychotherapy, Other',
+                                            'Psychotherapy, Self-Help, Other',
+                                            'Electrotherapy, Other',
+                                            'Pharmacotherapy, Psychotherapy',
+                                            'Psychotherapy, Self-Help'),
+                                  replacement=c('Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple',
+                                                'Multiple'),
+                                  vectorize=FALSE)
+
+data$Data <- gsub("Mental Health", "Clinical Records", data$Data)
+data$Data <- gsub("Physical Health", "Clinical Records", data$Data)
+
+unique(data$`Illness group`)
 ```
 
 
 ```{r}
 disord.split <- strsplit(data$`Illness group`, ",") 
-lev <- unlist(disord.split) %>%  trimws(.) %>%  unique(.)
-disord.dummy <- lapply(disord.split, function(x) table(factor(x, levels=lev)))
+disord <- unlist(disord.split) %>%  trimws(.) %>%  unique(.)
+disord.dummy <- lapply(disord.split, function(x) table(factor(x, levels=disord)))
 
 pp.split <- strsplit(data$`Precision psychiatry domain`, ",") 
-lev <- unlist(pp.split) %>%  trimws(.) %>%  unique(.)
-pp.dummy <- lapply(pp.split, function(x) table(factor(x, levels=lev)))
+pp <- unlist(pp.split) %>%  trimws(.) %>%  unique(.)
+pp.dummy <- lapply(pp.split, function(x) table(factor(x, levels=pp)))
 
 feed.split <- strsplit(data$`Feedback type (in case of treatment/ predictive)`, ",") 
-lev <- unlist(feed.split) %>%  trimws(.) %>%  unique(.)
-feed.dummy <- lapply(feed.split, function(x) table(factor(x, levels=lev)))
+feed <- unlist(feed.split) %>%  trimws(.) %>%  unique(.)
+feed.dummy <- lapply(feed.split, function(x) table(factor(x, levels=feed)))
 
 interv.split <- strsplit(data$`Intervention type`, ",") 
-lev <- unlist(interv.split) %>%  trimws(.) %>%  unique(.)
-interv.dummy <- lapply(interv.split, function(x) table(factor(x, levels=lev)))
+interv <- unlist(interv.split) %>%  trimws(.) %>%  unique(.)
+interv.dummy <- lapply(interv.split, function(x) table(factor(x, levels=interv)))
 
-data.split <- strsplit(data$Data, ",") 
-lev <- unlist(data.split) %>%  trimws(.) %>%  unique(.)
-data.dummy <- lapply(data.split, function(x) table(factor(x, levels=lev)))
+data_type.split <- strsplit(data$Data, ",") 
+data_type <- unlist(data_type.split) %>%  trimws(.) %>%  unique(.)
+data_type.dummy <- lapply(data_type.split, function(x) table(factor(x, levels=data_type)))
 
 data$Relevancy <- as.numeric(data$Relevancy)
 data$`Probability of Grant` <- as.numeric(data$`Probability of Grant`)
@@ -533,7 +630,7 @@ data$continent <- countrycode(sourcevar = data$`Assignee Country`,
 
 data$continent <- as.factor(data$continent)
 
-data_dummy <-  cbind(data, do.call(rbind, disord.dummy), do.call(rbind, pp.dummy), do.call(rbind, feed.dummy), do.call(rbind, interv.dummy), do.call(rbind, data.dummy))
+data_dummy <-  cbind(data, do.call(rbind, disord.dummy), do.call(rbind, pp.dummy), do.call(rbind, feed.dummy), do.call(rbind, interv.dummy), do.call(rbind, data_type.dummy))
 ```
 
 ```{r}
@@ -557,12 +654,44 @@ ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) +
   geom_tile()
 ```
 
+```{r}
+corstars(data_dummy_num, removeTriangle = "upper", result="none")
+```
+
 #### Data types and illnesses
 
 ```{r}
-data_dummy_data_illness <- data_dummy_num %>% select()
+disord_data_type <- data_dummy_num[names(data_dummy_num) %in% disord | names(data_dummy_num) %in% data_type]
+cormat <- round(cor(disord_data_type),2)
+melted_cormat <- melt(cormat) %>% filter(., !grepl("Other", Var1), !grepl("Other", Var2))
+
+ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile()
+
+corstars(disord_data_type, removeTriangle = "upper", result="none")
 ```
 
+
+#### Regression analysis 
+
+```{r}
+data$`Illness group` <- as.factor(data$`Illness group`) 
+data$`Precision psychiatry domain` <- as.factor(data$`Precision psychiatry domain`) 
+data$`Feedback type (in case of treatment/ predictive)` <- as.factor(data$`Feedback type (in case of treatment/ predictive)`) 
+data$`Intervention type` <- as.factor(data$`Intervention type`) 
+```
+
+```{r}
+chisq.test(data$`Illness group`, data$`Precision psychiatry domain`, simulate.p.value=TRUE)
+chisq.test(data$`Illness group`, data$`Feedback type (in case of treatment/ predictive)`, simulate.p.value=TRUE)
+
+chisq.test(data$`Illness group`, data$`Intervention type`, simulate.p.value=TRUE)
+prop.table(table(data$`Illness group`, data$`Intervention type`), margin=2)*100
+
+chisq.test(data$`Illness group`, data$Data, simulate.p.value=TRUE)
+
+
+```
 
 
 
@@ -625,16 +754,16 @@ data_cpc_trend %>% group_by(cpc_short) %>%
   summarise(trend = last(n) - first(n))
 
 data_cpc_trend <- data_cpc_trend %>% mutate(cpc_mean = case_when(
-    str_detect(cpc_short, "A61B") ~ "Instruments for diagnostic, surgical, and person-identification",
-    str_detect(cpc_short, "A61M") ~ "Introducing media into or onto the body; taking media from the body; producing or ending sleep",
-    str_detect(cpc_short, "A61N") ~ "Electrotherapy",
-    str_detect(cpc_short, "C12N") ~ "Propagating, preserving, or maintaining microorganisms; mutation or genetic engineering",
-    str_detect(cpc_short, "C12Q") ~ "Measuring or testing processes involving enzymes, nucleic acids, or microorganisms",
-    str_detect(cpc_short, "G01N") ~ "Investigating or analysing materials by determining their chemical or physical properties",
-    str_detect(cpc_short, "G06K") ~ "Reading and presenting graphical data (image or video)",
-    str_detect(cpc_short, "G06N") ~ "Computing based on specific computational models",
-    str_detect(cpc_short, "G10L") ~ "Speech or voice analysis or synthesis, recognition, processing, and coding or decoding",
-    str_detect(cpc_short, "G16H") ~ "ICT adapted for the handling or processing of healthcare or medical data"))
+    str_detect(cpc_short, "A61b") ~ "Instruments for diagnostic, surgical, and person-identification",
+    str_detect(cpc_short, "A61m") ~ "Introducing media into or onto the body; taking media from the body; producing or ending sleep",
+    str_detect(cpc_short, "A61n") ~ "Electrotherapy",
+    str_detect(cpc_short, "C12n") ~ "Propagating, preserving, or maintaining microorganisms; mutation or genetic engineering",
+    str_detect(cpc_short, "C12q") ~ "Measuring or testing processes involving enzymes, nucleic acids, or microorganisms",
+    str_detect(cpc_short, "G01n") ~ "Investigating or analysing materials by determining their chemical or physical properties",
+    str_detect(cpc_short, "G06k") ~ "Reading and presenting graphical data (image or video)",
+    str_detect(cpc_short, "G06n") ~ "Computing based on specific computational models",
+    str_detect(cpc_short, "G10l") ~ "Speech or voice analysis or synthesis, recognition, processing, and coding or decoding",
+    str_detect(cpc_short, "G16h") ~ "ICT adapted for the handling or processing of healthcare or medical data"))
 
 data_cpc_trend %>%
 ggplot(aes(x = Pub_year, y = n, group = cpc_mean)) +
@@ -753,28 +882,56 @@ data_links <- data_cpc_co_crossprod %>%
   dplyr::summarise(importance = sum(importance)) %>% 
   as.data.frame() %>% 
   .[!duplicated(data.frame(t(apply(.[1:2], 1, sort)))),] %>% 
-  filter(importance > 5)  #set value for minimum coo-ccureences
+  filter(importance > 5)  #set value for minimum co-occurences
 
 
 data_links_named <- data_links %>% mutate_at(c("source", "target"),
                                              list(~case_when(
-                                               . == "A61B5165" ~ "(A61B5165) Evaluating mental health",
-                                               . == "A61B54088" ~ "(A61B54088) Diagnosing cognitive diseases",
-                                               . == "A61B57264" ~ "(A61B57264) Classification of physiological\n signals using ML",
-                                               . == "A61B57267" ~ "(A61B57267) Training a mental health \nclassification device",
-                                               . == "A61B57275" ~ "(A61B57275) Predicting development of a medical\n condition based on physiological measurements",
-                                               . == "G06N2000" ~ "(G06N2000) Machine learning",
-                                               . == "G06N30454" ~ "(G06N30454) Neural nets based on biological models",
-                                               . == "G06N308" ~ "(G06N308) Learning based on biological models",
-                                               . == "G16H1020" ~ "(G16H1020) ICT for processing electronic \nclinical trials or questionnaires",
-                                               . == "G16H1060" ~ "(G16H1060) ICT for processing electronic patient records",
-                                               . == "G16H2010" ~ "(G16H2010) ICT for monitoring patient \ncompliance (drugs, medication)",
-                                               . == "G16H2030" ~ "(G16H2030) ICT for monitoring patient \ncompliance (physical therapies/activities)",
-                                               . == "G16H2070" ~ "(G16H2070) ICT for psychological therapies",
-                                               . == "G16H4067" ~ "(G16H4067) ICT specially adapted for management \nof remote healthcare resources",
-                                               . == "G16H5020" ~ "(G16H5020) ICT for for computer-aided diagnosis",
-                                               . == "G16H5030" ~ "(G16H5030) ICT for calculating health indices for\n individual health risk assessment",
-                                               . == "G16H5070" ~ "(G16H5070) ICT for mining of medical data"
+                                               . == "A61b50022" ~ "(A61b50022) Monitoring a patient through the internet",
+                                               . == "A61b50042" ~ "(A61b50042) Brain image acquisition for diagnostic purposes",
+                                               . == "A61b50205" ~ "(A61b50205) Simultaneously evaluating both cardiovascular conditions and other  body conditions (respiratory)",
+                                               . == "A61b502055" ~ "(A61b502055) Simultaneously evaluating cardiovascular condition and temperature",
+                                               . == "A61b5024" ~ "(A61b5024) Detecting, measuring or recording pulse rate or heart rate",
+                                               . == "A61b502405" ~ "(A61b502405) Determining heart rate variability",
+                                               . == "A61b50533" ~ "(A61b50533) Measuring galvanic skin response",
+                                               . == "A61b5055" ~ "(A61b5055) involving electronic or nuclear magnetic resonance",
+                                               . == "A61b50816" ~ "(A61b50816) Measuring devices for examining respiratory frequency",
+                                               . == "A61b51118" ~ "(A61b51118) Determining physical activity level",
+                                               . == "A61b516" ~ "(A61b516) Testing reaction times or psychological states",
+                                               . == "A61b5163" ~ "(A61b5163) Testing reaction times or psychological states by tracking eye movement, gaze, or pupil change",
+                                               . == "A61b5165" ~ "(A61b5165) Evaluating the state of mind, e.g. depression, anxiety",
+                                               . == "A61b5168" ~ "(A61b5168) Evaluating attention deficit, hyperactivity",
+                                               . == "A61b5316" ~ "(A61b5316) Specific diagnostic methods",
+                                               . == "A61b5369" ~ "(A61b5369) Using electroencephalography for diagnostic purposes",
+                                               . == "A61b5372" ~ "(A61b5372) Analysis of electroencephalograms for diagnostic purposes",
+                                               . == "A61b5374" ~ "(A61b5374) Detecting the frequency distribution of signals in electroencephalograms",
+                                               . == "A61b5398" ~ "(A61b5398) Electrooculography; Electroretinography",
+                                               . == "A61b54088" ~ "(A61b54088) Diagnosing or monitoring cognitive diseases",
+                                               . == "A61b54809" ~ "(A61b54809) Sleep detection",
+                                               . == "A61b54812" ~ "(A61b54812) Detecting sleep stages or cycles",
+                                               . == "A61b54815" ~ "(A61b54815) Assessing sleep quality",
+                                               . == "A61b54836" ~ "(A61b54836) Diagnosis combined with treatment in closed-loop systems or methods",
+                                               . == "A61b54848" ~ "(A61b54848) Monitoring or testing the effects of treatment, e.g. of medication",
+                                               . == "A61b56802" ~ "(A61b56802) Sensor mounted on worn items",
+                                               . == "A61b5021" ~ "(A61b5021) Measuring pressure in heart or blood vessels",
+                                               . == "A61b5165" ~ "(A61B5165) Evaluating mental health",
+                                               . == "A61b54088" ~ "(A61B54088) Diagnosing cognitive diseases",
+                                               . == "A61b57264" ~ "(A61B57264) Classification of physiological\n signals using ML",
+                                               . == "A61b57267" ~ "(A61B57267) Training a mental health \nclassification device",
+                                               . == "A61b57275" ~ "(A61B57275) Predicting development of a medical\n condition based on physiological measurements",
+                                               . == "A61m2100" ~ "(A61m2100) Devices or methods to cause a change in the state of consciousness (e.g., sleep, hypnosis)",
+                                               . == "G06n2000" ~ "(G06N2000) Machine learning",
+                                               . == "G06n30454" ~ "(G06N30454) Neural nets based on biological models",
+                                               . == "G06n308" ~ "(G06N308) Learning based on biological models",
+                                               . == "G16h1020" ~ "(G16H1020) ICT for processing electronic \nclinical trials or questionnaires",
+                                               . == "G16h1060" ~ "(G16H1060) ICT for processing electronic patient records",
+                                               . == "G16h2010" ~ "(G16H2010) ICT for monitoring patient \ncompliance (drugs, medication)",
+                                               . == "G16h2030" ~ "(G16H2030) ICT for monitoring patient \ncompliance (physical therapies/activities)",
+                                               . == "G16h2070" ~ "(G16H2070) ICT for psychological therapies",
+                                               . == "G16h4067" ~ "(G16H4067) ICT specially adapted for management \nof remote healthcare resources",
+                                               . == "G16h5020" ~ "(G16H5020) ICT for for computer-aided diagnosis",
+                                               . == "G16h5030" ~ "(G16H5030) ICT for calculating health indices for\n individual health risk assessment",
+                                               . == "G16h5070" ~ "(G16H5070) ICT for mining of medical data"
                                              ))
 )
      
@@ -796,11 +953,7 @@ data.frame(source = c(nodes[,"source"], nodes[,"target"])) %>%
 network <- graph_from_data_frame(d=data_links_named, vertices=nodes, directed=F)  
 
 ggnet2(network, label = TRUE, label.size = 3.5, color = "carac", size = "degree", palette = "Set3", edge.size=E(network)$importance*0.1, max_size = 30, mode = "kamadakawai") + guides(size = "none")
-
 ```
-
-
-
 
 ### Regional trend
 
